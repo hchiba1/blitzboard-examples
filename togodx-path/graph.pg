@@ -59,43 +59,43 @@ glytoucan
   :Carbohydrate
   name: "GlyTouCan"
 chembl_compound -> chebi
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 30798
 chembl_compound -> chembl_target
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 2981856
 chembl_compound -> mesh
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 40023
 chembl_compound -> pubchem_compound
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 1877743
 chembl_target -> ensembl_gene
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 1876
 chembl_target -> pdb
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 24415
 chembl_target -> uniprot
-  from: http://rdf.ebi.ac.uk/dataset/chembl
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
   n: 8045
 doid -> mesh
-  from: http://rdf.integbio.jp/dataset/bioportal/doid
+  FROM: http://rdf.integbio.jp/dataset/bioportal/doid
   n: 3614
 doid -> omim_phenotype
-  from: http://rdf.integbio.jp/dataset/bioportal/doid
+  FROM: http://rdf.integbio.jp/dataset/bioportal/doid
   n: 5512
 ensembl_gene -> hgnc
-  from: http://rdf.integbio.jp/dataset/ensembl
+  FROM: http://rdf.integbio.jp/dataset/ensembl
   n: 44278
 ensembl_gene -> ncbigene
-  from: http://rdf.ebi.ac.uk/dataset/ensembl/102/homo_sapiens
+  FROM: http://rdf.ebi.ac.uk/dataset/ensembl/102/homo_sapiens
   n: 5767391
 ensembl_gene -> uniprot
-  from: http://rdf.ebi.ac.uk/dataset/ensembl/102/homo_sapiens
+  FROM: http://rdf.ebi.ac.uk/dataset/ensembl/102/homo_sapiens
   n: 4373344
 glytoucan -> doid
-  from: "http://purl.obolibrary.org/obo/doid
+  FROM: "http://purl.obolibrary.org/obo/doid
          http://rdf.glycoinfo.org/ggdb
          http://rdf.glycoinfo.org/ggdonto
          http://rdf.glycosmos.org/disgenet
@@ -103,121 +103,121 @@ glytoucan -> doid
          http://rdf.glytoucan.org/partner/jcggdb_aist"
   n: 248
 glytoucan -> uniprot
-  from: http://rdf.glycosmos.org/glycan_glycoprotein
+  FROM: http://rdf.glycosmos.org/glycan_glycoprotein
   n: 28038
 hgnc -> ensembl_gene
-  from: http://med2rdf.org/graph/hgnc
+  FROM: http://med2rdf.org/graph/hgnc
   n: 39997
 hgnc -> ncbigene
-  from: http://med2rdf.org/graph/hgnc
+  FROM: http://med2rdf.org/graph/hgnc
   n: 42861
 hgnc -> uniprot
-  from: http://med2rdf.org/graph/hgnc
+  FROM: http://med2rdf.org/graph/hgnc
   n: 20309
 medgen -> hp
-  from: http://rdf.integbio.jp/dataset/togosite/medgen
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
   n: 16049
 medgen -> mesh
-  from: http://rdf.integbio.jp/dataset/togosite/medgen
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
   n: 16458
 medgen -> mondo
-  from: http://rdf.integbio.jp/dataset/togosite/medgen
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
   n: 20165
 medgen -> ncbigene
-  from: http://rdf.integbio.jp/dataset/togosite/medgen
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
   n: 6856
 medgen -> omim_phenotype
-  from: http://rdf.integbio.jp/dataset/togosite/medgen
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
   n: 10676
 medgen -> orphanet
-  from: http://rdf.integbio.jp/dataset/togosite/medgen
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
   n: 8658
 mondo -> doid
-  from: http://rdf.integbio.jp/dataset/bioportal/mondo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
   n: 9886
 mondo -> hp
-  from: http://rdf.integbio.jp/dataset/bioportal/mondo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
   n: 567
 mondo -> mesh
-  from: http://rdf.integbio.jp/dataset/bioportal/mondo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
   n: 7895
 mondo -> omim_phenotype
-  from: http://rdf.integbio.jp/dataset/bioportal/mondo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
   n: 9015
 mondo -> orphanet
-  from: http://rdf.integbio.jp/dataset/bioportal/mondo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
   n: 9436
 nando -> mondo
-  from: http://rdf.integbio.jp/dataset/togosite/nando
+  FROM: http://rdf.integbio.jp/dataset/togosite/nando
   n: 2389
 ncbigene -> ensembl_gene
-  from: input/ncbigene/gene2ensembl
+  FROM: input/ncbigene/gene2ensembl
   n: 4241243
 ncbigene -> hgnc
-  from: input/ncbigene/Homo_sapiens.gene_info
+  FROM: input/ncbigene/Homo_sapiens.gene_info
   n: 43038
 orphanet -> mesh
-  from: http://rdf.integbio.jp/dataset/bioportal/ordo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/ordo
   n: 1760
 orphanet -> omim_phenotype
-  from: http://rdf.integbio.jp/dataset/bioportal/ordo
+  FROM: http://rdf.integbio.jp/dataset/bioportal/ordo
   n: 7574
 pdb -> uniprot
-  from: http://rdf.integbio.jp/dataset/pdbj
+  FROM: http://rdf.integbio.jp/dataset/pdbj
   n: 291165
 pubchem_compound -> chebi
-  from: http://rdf.ncbi.nlm.nih.gov/pubchem/substance
+  FROM: http://rdf.ncbi.nlm.nih.gov/pubchem/substance
   n: 130141
 pubchem_compound -> chembl_compound
   n: 2084624
 pubchem_compound -> glytoucan
   n: 31767
 reactome_reaction -> chebi
-  from: http://rdf.ncbi.nlm.nih.gov/pubchem/substance
+  FROM: http://rdf.ncbi.nlm.nih.gov/pubchem/substance
   n: 182548
 reactome_reaction -> uniprot
-  from: http://rdf.ebi.ac.uk/dataset/reactome
+  FROM: http://rdf.ebi.ac.uk/dataset/reactome
   n: 625777
 togovar -> ensembl_gene
   :tsv
-  from: https://togovar.biosciencedbc.jp/public/togoid/tgvid2ensembl.tsv
+  FROM: https://togovar.biosciencedbc.jp/public/togoid/tgvid2ensembl.tsv
   n: 72473309
 togovar -> hgnc
   :tsv
-  from: https://togovar.biosciencedbc.jp/public/togoid/tgvid2hgnc.tsv
+  FROM: https://togovar.biosciencedbc.jp/public/togoid/tgvid2hgnc.tsv
   n: 60732887
 togovar -> medgen
-  from: "http://rdf.integbio.jp/dataset/togosite/clinvar
+  FROM: "http://rdf.integbio.jp/dataset/togosite/clinvar
          http://rdf.integbio.jp/dataset/togosite/variation
          http://rdf.integbio.jp/dataset/togosite/variation/annotation/clinvar"
   n: 933266
 togovar -> ncbigene
   :tsv
-  from: https://togovar.biosciencedbc.jp/public/togoid/tgvid2ncbigene.tsv
+  FROM: https://togovar.biosciencedbc.jp/public/togoid/tgvid2ncbigene.tsv
   n: 60001809
 uniprot -> chembl_target
   :tsv
-  from: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
   n: 9579
 uniprot -> ensembl_gene
   :tsv
-  from: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
   n: 5225194
 uniprot -> hgnc
   :tsv
-  from: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
   n: 78237
 uniprot -> ncbigene
   :tsv
-  from: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
   n: 13701476
 uniprot -> omim_phenotype
   n: 6378
 uniprot -> orphanet
   :tsv
-  from: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
   n: 7737
 uniprot -> pdb
   :tsv
-  from: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
   n: 281044
