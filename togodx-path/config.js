@@ -1,7 +1,8 @@
 {
   node: {
     caption: ['id'],
-    defaultIcon: true,
+    defaultIcon: false,
+    color: '@color',
   },
   edge: {
     caption: ['label'],
