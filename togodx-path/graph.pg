@@ -8,7 +8,7 @@ chembl_compound
   name: "ChEMBL compound"
 chembl_target
   :Protein
-  color: "#3AA64C"
+  color: "#79A63A"
   name: "ChEMBL target"
 doid
   :Disease
@@ -72,7 +72,7 @@ togovar
   name: "TogoVar variant"
 uniprot
   :Protein
-  color: "#3AA64C"
+  color: "#79A63A"
   name: "UniProt"
 glytoucan
   :Glycan
