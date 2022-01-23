@@ -7,6 +7,7 @@
   edge: {
     caption: ['label'],
     width: '@width',
+    color: '@color',
     opacity: 0.6,
   },
   layout: 'default',
