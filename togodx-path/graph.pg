@@ -127,12 +127,7 @@ ensembl_gene -> uniprot
   N: 4373344
   width: 6.64
 glytoucan -> doid
-  FROM: "http://purl.obolibrary.org/obo/doid
-         http://rdf.glycoinfo.org/ggdb
-         http://rdf.glycoinfo.org/ggdonto
-         http://rdf.glycosmos.org/disgenet
-         http://rdf.glycosmos.org/genomealliance
-         http://rdf.glytoucan.org/partner/jcggdb_aist"
+  FROM: "http://purl.obolibrary.org/obo/doid http://rdf.glycoinfo.org/ggdb http://rdf.glycoinfo.org/ggdonto http://rdf.glycosmos.org/disgenet http://rdf.glycosmos.org/genomealliance http://rdf.glytoucan.org/partner/jcggdb_aist"
   N: 248
   width: 2.39
 glytoucan -> uniprot
@@ -248,9 +243,7 @@ togovar -> hgnc
   N: 60732887
   width: 7.78
 togovar -> medgen
-  FROM: "http://rdf.integbio.jp/dataset/togosite/clinvar
-         http://rdf.integbio.jp/dataset/togosite/variation
-         http://rdf.integbio.jp/dataset/togosite/variation/annotation/clinvar"
+  FROM: "http://rdf.integbio.jp/dataset/togosite/clinvar http://rdf.integbio.jp/dataset/togosite/variation http://rdf.integbio.jp/dataset/togosite/variation/annotation/clinvar"
   N: 933266
   width: 5.97
 togovar -> ncbigene
