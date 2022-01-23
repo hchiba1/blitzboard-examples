@@ -23,7 +23,7 @@ hgnc
   color: "#3AA64C"
   name: "HGNC"
 hp
-  :Phenotype
+  :Disease
   color: "#3A5EA6"
   name: "Human Phenotype Ontology"
 medgen
@@ -31,7 +31,7 @@ medgen
   color: "#3A5EA6"
   name: "MedGen"
 mesh
-  :Terminology
+  :Disease
   color: "#3A5EA6"
   name: "MeSH"
 mondo
@@ -75,7 +75,7 @@ uniprot
   color: "#3AA64C"
   name: "UniProt"
 glytoucan
-  :Carbohydrate
+  :Glycan
   color: "#673AA6"
   name: "GlyTouCan"
 chembl_compound -> chebi
