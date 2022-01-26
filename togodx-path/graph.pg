@@ -1,83 +1,123 @@
 chebi
   :Compound
-  color: "#A63A94"
   name: "ChEBI compound"
+  N: 133484
+  size: 15.39
+  color: "#A63A94"
 chembl_compound
   :Compound
-  color: "#A63A94"
   name: "ChEMBL compound"
+  N: 2089492
+  size: 18.96
+  color: "#A63A94"
 chembl_target
   :Protein
-  color: "#79A63A"
   name: "ChEMBL target"
+  N: 9117
+  size: 11.88
+  color: "#79A63A"
 doid
   :Disease
-  color: "#3A5EA6"
   name: "Disease ontology"
+  N: 10670
+  size: 12.09
+  color: "#3A5EA6"
 ensembl_gene
   :Gene
-  color: "#3AA64C"
   name: "Ensembl gene"
+  N: 9465790
+  size: 20.94
+  color: "#3AA64C"
 hgnc
   :Gene
-  color: "#3AA64C"
   name: "HGNC"
+  N: 43531
+  size: 13.92
+  color: "#3AA64C"
 hp
   :Disease
-  color: "#3A5EA6"
   name: "Human Phenotype Ontology"
+  N: 16055
+  size: 12.63
+  color: "#3A5EA6"
 medgen
   :Disease
-  color: "#3A5EA6"
   name: "MedGen"
+  N: 43766
+  size: 13.92
+  color: "#3A5EA6"
 mesh
   :Disease
-  color: "#3A5EA6"
   name: "MeSH"
+  N: 11986
+  size: 12.24
+  color: "#3A5EA6"
 mondo
   :Disease
-  color: "#3A5EA6"
   name: "MONDO"
+  N: 22248
+  size: 13.05
+  color: "#3A5EA6"
 nando
   :Disease
-  color: "#3A5EA6"
   name: "NANDO"
+  N: 2210
+  size: 10.02
+  color: "#3A5EA6"
 ncbigene
   :Gene
-  color: "#3AA64C"
   name: "NCBI gene"
+  N: 36038151
+  size: 22.68
+  color: "#3AA64C"
 omim_phenotype
   :Disease
-  color: "#3A5EA6"
   name: "OMIM phenotype"
+  N: 9632
+  size: 11.94
+  color: "#3A5EA6"
 orphanet
   :Disease
-  color: "#3A5EA6"
   name: "Orphanet"
+  N: 9597
+  size: 11.94
+  color: "#3A5EA6"
 pdb
   :Structure
-  color: "#A6823A"
   name: "PDB"
+  N: 178327
+  size: 15.75
+  color: "#A6823A"
 pubchem_compound
   :Compound
-  color: "#A63A94"
   name: "PubChem compound"
+  N: 110347980
+  size: 24.12
+  color: "#A63A94"
 reactome_reaction
   :Interaction
-  color: "#A63A43"
   name: "Reactome reaction"
+  N: 90211
+  size: 14.88
+  color: "#A63A43"
 togovar
   :Variant
-  color: "#3AA69D"
   name: "TogoVar variant"
+  N: 91993850
+  size: 23.88
+  color: "#3AA69D"
 uniprot
   :Protein
-  color: "#79A63A"
   name: "UniProt"
+  N: 242407689
+  size: 25.14
+  color: "#79A63A"
 glytoucan
   :Glycan
-  color: "#673AA6"
   name: "GlyTouCan"
+  N: 33805
+  size: 13.59
+  color: "#673AA6"
 chembl_compound -> chebi
   FROM: http://rdf.ebi.ac.uk/dataset/chembl
   N: 30798
