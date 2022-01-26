@@ -2,6 +2,7 @@
   node: {
     caption: ['id'],
     defaultIcon: false,
+    size: '@size',
     color: '@color',
   },
   edge: {
