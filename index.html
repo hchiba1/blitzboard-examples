@@ -166,6 +166,7 @@
                              loadSample(sampleName, (graph, config) => {
                                  blitzboard.setGraph(graph, false);
                                  blitzboard.setConfig(Function('blitzboard', '"use strict";return (' + config + ')')(blitzboard), true);
+                                 blitzboard.network.stabilize();
                              });
                          }
                      }
