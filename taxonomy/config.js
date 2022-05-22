@@ -26,23 +26,9 @@
         const query = sparqlTaxonomyTree(`taxid:${n.id}`, '?url');
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
-            let id = b.url.value.replace(/.*\//g, '');
-            let node = {
-              id: id,
-              labels: ['Taxon'],
-              properties: {
-                url: [b.url.value],
-                'taxon rank': [b.rank.value],
-                'taxon name': [b.name.value],
-              }
-            };
-            blitzboard.addNode(node, false);
-            if (!blitzboard.hasEdge(n.id, node.id)) {
-              blitzboard.addEdge({
-                from: n.id,
-                to: node.id,
-                labels: ['parent taxon'],
-              });
+            const id = addNode(b);
+            if (id) {
+              addEdge(n.id, id);
             }
           }
           blitzboard.update();
@@ -54,31 +40,42 @@
         const query2 = sparqlTaxonomyTree('?url', `taxid:${n.id}`);
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
-            let id = b.url.value.replace(/.*\//g, '');
-            if (blitzboard.hasNode(id)) {
-              continue;
-            }
-            let node = {
-              id: id,
-              labels: ['Taxon'],
-              properties: {
-                url: [b.url.value],
-                'taxon rank': [b.rank.value],
-                'taxon name': [b.name.value],
-              }
-            };
-            blitzboard.addNode(node, false);
-            if (!blitzboard.hasEdge(node.id, n.id)) {
-              blitzboard.addEdge({
-                from: node.id,
-                to: n.id,
-                labels: ['parent taxon'],
-              });
+            const id = addNode(b);
+            if (id) {
+              addEdge(id, n.id);
             }
           }
           blitzboard.update();
           blitzboard.hideLoader();
         });
+      }
+
+      function addNode (b) {
+        let id = b.url.value.replace(/.*\//g, '');
+        if (blitzboard.hasNode(id)) {
+          return;
+        }
+        let node = {
+          id: id,
+          labels: ['Taxon'],
+          properties: {
+            url: [b.url.value],
+            'taxon rank': [b.rank.value],
+            'taxon name': [b.name.value],
+          }
+        };
+        blitzboard.addNode(node, false);
+        return id;
+      }
+
+      function addEdge (child, parent) {
+        if (!blitzboard.hasEdge(child, parent)) {
+          blitzboard.addEdge({
+            from: child,
+            to: parent,
+            labels: ['parent taxon'],
+          });
+        }
       }
 
       function setThumb(node, name) {
