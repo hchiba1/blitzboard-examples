@@ -76,6 +76,9 @@
             if (elem.url?.value) {
               node.properties.Wikidata = [elem.url.value];
             }
+            if (elem.descr_ja?.value) {
+              node.properties.description = [elem.descr_ja.value];
+            }
             if (elem.name_ja?.value) {
               node.properties.name = [elem.name_ja.value];
             }
@@ -101,7 +104,7 @@
       function getThumb(name, callback) {
         const sparqlGetThum = `
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-        SELECT ?thumb ?name_ja ?url
+        SELECT ?thumb ?name_ja ?url ?descr_ja
         WHERE {
           ?url wdt:P225 "${name}" .
           ?url rdfs:label ?name_ja .
@@ -109,6 +112,10 @@
             ?url wdt:P18 ?thumb .
           }
           FILTER(lang(?name_ja) = 'ja')
+          OPTIONAL {
+            ?url <http://schema.org/description> ?descr_ja .
+            FILTER(lang(?descr_ja) = 'ja')
+          }
         }`;
         fetch(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`).then(res => {
           return res.json();
