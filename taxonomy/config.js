@@ -24,7 +24,9 @@
 
       function getParentNode(taxid) {
         const query = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
-        $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
+        fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`).then(res => {
+          return res.json();
+        }).then(result => {
           for (let elem of result.results.bindings) {
             addEdge(taxid, addNode(elem));
           }
@@ -35,7 +37,9 @@
 
       function getChildNode(taxid) {
         const query2 = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
-        $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
+        fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`).then(res => {
+          return res.json();
+        }).then(result => {
           for (let elem of result.results.bindings) {
             addEdge(addNode(elem), taxid);
           }
