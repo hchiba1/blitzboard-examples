@@ -25,8 +25,8 @@
       function getParentNode(taxid) {
         const query = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
-          for (let b of result.results.bindings) {
-            addEdge(taxid, addNode(b));
+          for (let elem of result.results.bindings) {
+            addEdge(taxid, addNode(elem));
           }
           blitzboard.update();
           blitzboard.hideLoader();
@@ -36,16 +36,16 @@
       function getChildNode(taxid) {
         const query2 = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
-          for (let b of result.results.bindings) {
-            addEdge(addNode(b), taxid);
+          for (let elem of result.results.bindings) {
+            addEdge(addNode(elem), taxid);
           }
           blitzboard.update();
           blitzboard.hideLoader();
         });
       }
 
-      function addNode (b) {
-        let id = b.url.value.replace(/.*\//g, '');
+      function addNode (elem) {
+        let id = elem.url.value.replace(/.*\//g, '');
         if (blitzboard.hasNode(id)) {
           return;
         }
@@ -53,9 +53,9 @@
           id: id,
           labels: ['Taxon'],
           properties: {
-            url: [b.url.value],
-            'taxon rank': [b.rank.value],
-            'taxon name': [b.name.value],
+            url: [elem.url.value],
+            'taxon rank': [elem.rank.value],
+            'taxon name': [elem.name.value],
           }
         };
         blitzboard.addNode(node, false);
@@ -83,9 +83,9 @@
           }
         }`;
         $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`, (result) => {
-          for (let b of result.results.bindings) {
-            if (b.thumb?.value) {
-              node.properties.thumbnail = [b.thumb.value];
+          for (let elem of result.results.bindings) {
+            if (elem.thumb?.value) {
+              node.properties.thumbnail = [elem.thumb.value];
             }
           }
           blitzboard.update();
