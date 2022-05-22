@@ -8,18 +8,22 @@
       getParentNode();
       getChildNode();
 
-      function getParentNode() {
-        let query = `
+      function sparqlTaxonomyTree(child, parent) {
+        return `
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX taxid: <http://identifiers.org/taxonomy/>
         PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
         SELECT ?url ?rank ?name
         WHERE {
-          taxid:${n.id} rdfs:subClassOf ?url .
+          ${child} rdfs:subClassOf ${parent} .
           ?url rdfs:label ?name .
           ?url taxon:rank/rdfs:label ?rank .
         }
         `;
+      }
+
+      function getParentNode() {
+        const query = sparqlTaxonomyTree(`taxid:${n.id}`, '?url');
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
             let id = b.url.value.replace(/.*\//g, '');
@@ -47,17 +51,7 @@
       }
 
       function getChildNode() {
-        let query2 = `
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX taxid: <http://identifiers.org/taxonomy/>
-        PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-        SELECT ?url ?rank ?name
-        WHERE {
-          ?url rdfs:subClassOf taxid:${n.id} .
-          ?url rdfs:label ?name .
-          ?url taxon:rank/rdfs:label ?rank .
-        }
-        `;
+        const query2 = sparqlTaxonomyTree('?url', `taxid:${n.id}`);
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
             let id = b.url.value.replace(/.*\//g, '');
