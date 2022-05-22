@@ -1,1 +1,3 @@
-9606 :Taxon "name":"ホモ・サピエンス" thumbnail:"http://commons.wikimedia.org/wiki/Special:FilePath/Human.svg"
+9606 :Taxon "taxon name":"Homo sapiens" "taxon rank":species "tax ID":"http://identifiers.org/taxonomy/9606" thumbnail:"http://commons.wikimedia.org/wiki/Special:FilePath/Human.svg" Wikidata:"http://www.wikidata.org/entity/Q15978631" rank_ja:種 name:ホモ・サピエンス
+9605 :Taxon "taxon name":Homo "taxon rank":genus "tax ID":"http://identifiers.org/taxonomy/9605" thumbnail:"http://commons.wikimedia.org/wiki/Special:FilePath/Comparison%20of%20skull%20features%20of%20Homo%20naledi%20and%20other%20early%20human%20species.jpg" Wikidata:"http://www.wikidata.org/entity/Q171283" rank_ja:属 name:ヒト属
+9606 -> 9605 :"parent taxon"
