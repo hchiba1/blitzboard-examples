@@ -1,6 +1,6 @@
 {
   node: {
-    caption: ['taxon name'],
+    caption: ['name'],
     defaultIcon: true,
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
@@ -73,6 +73,7 @@
             if (elem.thumb?.value) {
               node.properties.thumbnail = [elem.thumb.value];
             }
+            node.properties.name = [elem.name_ja.value];
           }
           blitzboard.addNode(node, false);
           callback(id);
@@ -92,12 +93,14 @@
       function getThumb(name, callback) {
         const sparqlGetThum = `
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-        SELECT ?thumb
+        SELECT ?thumb ?name_ja
         WHERE {
           ?url wdt:P225 "${name}" .
+          ?url rdfs:label ?name_ja .
           OPTIONAL {
             ?url wdt:P18 ?thumb .
           }
+          FILTER(lang(?name_ja) = 'ja')
         }`;
         fetch(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`).then(res => {
           return res.json();
