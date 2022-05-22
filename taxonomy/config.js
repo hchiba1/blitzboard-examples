@@ -63,9 +63,9 @@
           id: id,
           labels: ['Taxon'],
           properties: {
-            url: [elem.url.value],
-            'taxon rank': [elem.rank.value],
             'taxon name': [elem.name.value],
+            'taxon rank': [elem.rank.value],
+            'tax ID': [elem.url.value],
           }
         };
         getThumb(elem.name.value, (result) => {
@@ -73,7 +73,15 @@
             if (elem.thumb?.value) {
               node.properties.thumbnail = [elem.thumb.value];
             }
-            node.properties.name = [elem.name_ja.value];
+            if (elem.url?.value) {
+              node.properties.Wikidata = [elem.url.value];
+            }
+            if (elem.name_ja?.value) {
+              node.properties.name = [elem.name_ja.value];
+            }
+          }
+          if (!node.properties.name) {
+            node.properties.name = [elem.name.value];
           }
           blitzboard.addNode(node, false);
           callback(id);
@@ -93,7 +101,7 @@
       function getThumb(name, callback) {
         const sparqlGetThum = `
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-        SELECT ?thumb ?name_ja
+        SELECT ?thumb ?name_ja ?url
         WHERE {
           ?url wdt:P225 "${name}" .
           ?url rdfs:label ?name_ja .
