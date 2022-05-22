@@ -32,7 +32,9 @@
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
-            addEdge(taxid, addNode(elem));
+            addNode(elem, (id) => {
+              addEdge(taxid, id);
+            });
           }
         });
         return promise;
@@ -44,13 +46,15 @@
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
-            addEdge(addNode(elem), taxid);
+            addNode(elem, (id) => {
+              addEdge(id, taxid);
+            });
           }
         });
         return promise;
       }
 
-      function addNode (elem) {
+      function addNode (elem, callback) {
         let id = elem.url.value.replace(/.*\//g, '');
         if (blitzboard.hasNode(id)) {
           return;
@@ -64,8 +68,15 @@
             'taxon name': [elem.name.value],
           }
         };
-        blitzboard.addNode(node, false);
-        return id;
+        getThumb(elem.name.value, (result) => {
+          for (let elem of result.results.bindings) {
+            if (elem.thumb?.value) {
+              node.properties.thumbnail = [elem.thumb.value];
+            }
+          }
+          blitzboard.addNode(node, false);
+          callback(id);
+        });;
       }
 
       function addEdge (child, parent) {
@@ -78,7 +89,7 @@
         }
       }
 
-      function setThumb(node, name) {
+      function getThumb(name, callback) {
         const sparqlGetThum = `
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
         SELECT ?thumb
@@ -88,14 +99,10 @@
             ?url wdt:P18 ?thumb .
           }
         }`;
-        $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`, (result) => {
-          for (let elem of result.results.bindings) {
-            if (elem.thumb?.value) {
-              node.properties.thumbnail = [elem.thumb.value];
-            }
-          }
-          blitzboard.update();
-          blitzboard.hideLoader();
+        fetch(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`).then(res => {
+          return res.json();
+        }).then(result => {
+          callback(result);
         });
       }
     
