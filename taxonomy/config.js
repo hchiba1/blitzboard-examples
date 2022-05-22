@@ -79,6 +79,9 @@
             if (elem.descr_ja?.value) {
               node.properties.description = [elem.descr_ja.value];
             }
+            if (elem.rank_ja?.value) {
+              node.properties.rank_ja = [elem.rank_ja.value];
+            }
             if (elem.name_ja?.value) {
               node.properties.name = [elem.name_ja.value];
             }
@@ -104,14 +107,16 @@
       function getThumb(name, callback) {
         const sparqlGetThum = `
         PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-        SELECT ?thumb ?name_ja ?url ?descr_ja
+        SELECT ?thumb ?name_ja ?rank_ja ?url ?descr_ja
         WHERE {
           ?url wdt:P225 "${name}" .
           ?url rdfs:label ?name_ja .
+          ?url wdt:P105/rdfs:label ?rank_ja .
           OPTIONAL {
             ?url wdt:P18 ?thumb .
           }
           FILTER(lang(?name_ja) = 'ja')
+          FILTER(lang(?rank_ja) = 'ja')
           OPTIONAL {
             ?url <http://schema.org/description> ?descr_ja .
             FILTER(lang(?descr_ja) = 'ja')
