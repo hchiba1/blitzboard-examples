@@ -5,8 +5,12 @@
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
-      getParentNode(n.id);
-      getChildNode(n.id);
+      const promiseParent = getParentNode(n.id);
+      const promiseChild = getChildNode(n.id);
+      Promise.all([promiseParent, promiseChild]).then(() => {
+        blitzboard.update();
+        blitzboard.hideLoader();
+      });
 
       function sparqlTaxonomyTree(child, parent) {
         return `
@@ -24,27 +28,23 @@
 
       function getParentNode(taxid) {
         const query = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
-        fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`).then(res => {
+        return fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
             addEdge(taxid, addNode(elem));
           }
-          blitzboard.update();
-          blitzboard.hideLoader();
         });
       }
 
       function getChildNode(taxid) {
         const query2 = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
-        fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`).then(res => {
+        return fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
             addEdge(addNode(elem), taxid);
           }
-          blitzboard.update();
-          blitzboard.hideLoader();
         });
       }
 
