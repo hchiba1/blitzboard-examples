@@ -124,7 +124,7 @@
     blockShifting: true,
     edgeMinimization: true,
     parentCentralization: true,
-    direction: 'DU',        // UD, DU, LR, RL
+    direction: 'LR',        // UD, DU, LR, RL
     sortMethod: 'directed',  // hubsize, directed
     shakeTowards: 'leaves'  // roots, leaves
   },
