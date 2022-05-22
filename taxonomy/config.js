@@ -1,121 +1,118 @@
 {
   node: {
-    caption: ['name'],
+    caption: ['taxon name'],
     defaultIcon: true,
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
+      getParentNode();
+      getChildNode();
 
-      let query = `
-      SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
-        wd:${n.id} wdt:P171 ?url .
-        ?url wdt:P31 wd:Q16521 ;
-             wdt:P105/rdfs:label ?rank ;
-             wdt:P225 ?name ;
-             rdfs:label ?name_ja .
-        OPTIONAL {
-          ?url wdt:P18 ?thumb .
+      function getParentNode() {
+        let query = `
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX taxid: <http://identifiers.org/taxonomy/>
+        PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
+        SELECT ?url ?rank ?name
+        WHERE {
+          taxid:${n.id} rdfs:subClassOf ?url .
+          ?url rdfs:label ?name .
+          ?url taxon:rank/rdfs:label ?rank .
         }
-        OPTIONAL {
-          ?url <http://schema.org/description> ?descr_ja .
-          FILTER(lang(?descr_ja) = 'ja')
-        }
-        FILTER(lang(?rank) = 'en')
-        FILTER(lang(?name_ja) = 'ja')
+        `;
+        $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
+          for (let b of result.results.bindings) {
+            let id = b.url.value.replace(/.*\//g, '');
+            let node = {
+              id: id,
+              labels: ['Taxon'],
+              properties: {
+                url: [b.url.value],
+                'taxon rank': [b.rank.value],
+                'taxon name': [b.name.value],
+              }
+            };
+            blitzboard.addNode(node, false);
+            if (!blitzboard.hasEdge(n.id, node.id)) {
+              blitzboard.addEdge({
+                from: n.id,
+                to: node.id,
+                labels: ['parent taxon'],
+              });
+            }
+          }
+          blitzboard.update();
+          blitzboard.hideLoader();
+        });
       }
-      `;
 
-      let query2 = `
-      SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
-        ?url wdt:P171 wd:${n.id} .
-        ?url wdt:P31 wd:Q16521 ;
-             wdt:P105/rdfs:label ?rank ;
-             wdt:P225 ?name ;
-             rdfs:label ?name_ja .
-        OPTIONAL {
-          ?url wdt:P18 ?thumb .
+      function getChildNode() {
+        let query2 = `
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX taxid: <http://identifiers.org/taxonomy/>
+        PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
+        SELECT ?url ?rank ?name
+        WHERE {
+          ?url rdfs:subClassOf taxid:${n.id} .
+          ?url rdfs:label ?name .
+          ?url taxon:rank/rdfs:label ?rank .
         }
-        OPTIONAL {
-          ?url <http://schema.org/description> ?descr_ja .
-          FILTER(lang(?descr_ja) = 'ja')
-        }
-        FILTER(lang(?rank) = 'en')
-        FILTER(lang(?name_ja) = 'ja')
+        `;
+        $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
+          for (let b of result.results.bindings) {
+            let id = b.url.value.replace(/.*\//g, '');
+            if (blitzboard.hasNode(id)) {
+              continue;
+            }
+            let node = {
+              id: id,
+              labels: ['Taxon'],
+              properties: {
+                url: [b.url.value],
+                'taxon rank': [b.rank.value],
+                'taxon name': [b.name.value],
+              }
+            };
+            blitzboard.addNode(node, false);
+            if (!blitzboard.hasEdge(node.id, n.id)) {
+              blitzboard.addEdge({
+                from: node.id,
+                to: n.id,
+                labels: ['parent taxon'],
+              });
+            }
+          }
+          blitzboard.update();
+          blitzboard.hideLoader();
+        });
       }
-      `;
-      
-      $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
-        for (let b of result.results.bindings) {
-          let id = b.url.value.replace(/.*\//g, '');
-          let node = {
-            id: id,
-            labels: ['Taxon'],
-            properties: {
-              url: [b.url.value],
-              'taxon rank': [b.rank.value],
-              'taxon name': [b.name.value],
-              name: [b.name_ja.value],
+
+      function setThumb(node, name) {
+        const sparqlGetThum = `
+        PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+        SELECT ?thumb
+        WHERE {
+          ?url wdt:P225 "${name}" .
+          OPTIONAL {
+            ?url wdt:P18 ?thumb .
+          }
+        }`;
+        $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`, (result) => {
+          for (let b of result.results.bindings) {
+            if (b.thumb?.value) {
+              node.properties.thumbnail = [b.thumb.value];
             }
-          };
-          if (b.descr_ja?.value) {
-            node.properties.description = [b.descr_ja.value];
           }
-          if (b.thumb?.value) {
-            node.properties.thumbnail = [b.thumb.value];
-          }
-          blitzboard.addNode(node, false);
-          if (!blitzboard.hasEdge(n.id, node.id)) {
-            blitzboard.addEdge({
-              from: n.id,
-              to: node.id,
-              labels: ['parent taxon'],
-            });
-          }
-        }
-        blitzboard.update();
-        blitzboard.hideLoader();
-      });
-      
-      $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
-        for (let b of result.results.bindings) {
-          let id = b.url.value.replace(/.*\//g, '');
-          if (blitzboard.hasNode(id)) {
-            continue;
-          }
-          let node = {
-            id: id,
-            labels: ['Taxon'],
-            properties: {
-              url: [b.url.value],
-              'taxon rank': [b.rank.value],
-              'taxon name': [b.name.value],
-              name: [b.name_ja.value],
-            }
-          };
-          if (b.descr_ja?.value) {
-            node.properties.description = [b.descr_ja.value];
-          }
-          if (b.thumb?.value) {
-            node.properties.thumbnail = [b.thumb.value];
-          }
-          blitzboard.addNode(node, false);
-          if (!blitzboard.hasEdge(node.id, n.id)) {
-            blitzboard.addEdge({
-              from: node.id,
-              to: n.id,
-              labels: ['parent taxon'],
-            });
-          }
-        }
-        blitzboard.update();
-        blitzboard.hideLoader();
-      });
+          blitzboard.update();
+          blitzboard.hideLoader();
+        });
+      }
     
     }
 
   },
   edge: {
-    caption: ['label'],
+    caption: [],
   },
   layout: 'hierarchical',
   layoutSettings: {
