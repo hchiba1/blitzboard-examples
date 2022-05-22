@@ -5,8 +5,8 @@
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
-      getParentNode();
-      getChildNode();
+      getParentNode(n.id);
+      getChildNode(n.id);
 
       function sparqlTaxonomyTree(child, parent) {
         return `
@@ -22,22 +22,22 @@
         `;
       }
 
-      function getParentNode() {
-        const query = sparqlTaxonomyTree(`taxid:${n.id}`, '?url');
+      function getParentNode(taxid) {
+        const query = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
-            addEdge(n.id, addNode(b));
+            addEdge(taxid, addNode(b));
           }
           blitzboard.update();
           blitzboard.hideLoader();
         });
       }
 
-      function getChildNode() {
-        const query2 = sparqlTaxonomyTree('?url', `taxid:${n.id}`);
+      function getChildNode(taxid) {
+        const query2 = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
-            addEdge(addNode(b), n.id);
+            addEdge(addNode(b), taxid);
           }
           blitzboard.update();
           blitzboard.hideLoader();
