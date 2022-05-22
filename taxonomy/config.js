@@ -26,10 +26,7 @@
         const query = sparqlTaxonomyTree(`taxid:${n.id}`, '?url');
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
-            const id = addNode(b);
-            if (id) {
-              addEdge(n.id, id);
-            }
+            addEdge(n.id, addNode(b));
           }
           blitzboard.update();
           blitzboard.hideLoader();
@@ -40,10 +37,7 @@
         const query2 = sparqlTaxonomyTree('?url', `taxid:${n.id}`);
         $.get(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
           for (let b of result.results.bindings) {
-            const id = addNode(b);
-            if (id) {
-              addEdge(id, n.id);
-            }
+            addEdge(addNode(b), n.id);
           }
           blitzboard.update();
           blitzboard.hideLoader();
@@ -69,7 +63,7 @@
       }
 
       function addEdge (child, parent) {
-        if (!blitzboard.hasEdge(child, parent)) {
+        if (child && parent && !blitzboard.hasEdge(child, parent)) {
           blitzboard.addEdge({
             from: child,
             to: parent,
