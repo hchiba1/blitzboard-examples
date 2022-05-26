@@ -16,16 +16,23 @@
          child.style = 'width: 800px; height: 600px; border: solid 1px silver;';
          document.querySelector('#graph-area').appendChild(child);
          let blitzboard = new Blitzboard(child);
-         fetch('taxonomy/graph.pg').then(res => {
-             return res.text();
-         }).then(graph => {
-             blitzboard.setGraph(graph, false);
-             fetch('taxonomy/config.js').then(res => {
-                 return res.text();
-             }).then(config => {
-                 blitzboard.setConfig(Function('blitzboard', `"use strict";return (${config})`)(blitzboard), true);
-                 blitzboard.network.stabilize();
+         let graph, config;
+         let graphPromise = new Promise((resolve, reject) => {
+             $.get(`https://raw.githubusercontent.com/hchiba1/blitzboard-samples/main/taxonomy/graph.pg`, (res) => {
+                 graph = res;
+                 resolve();
              });
+         });
+         let configPromise = new Promise((resolve, reject) => {
+             $.get(`https://raw.githubusercontent.com/hchiba1/blitzboard-samples/main/taxonomy/config.js`, (res) => {
+                 config = res;
+                 resolve();
+             });
+         });
+         Promise.all([graphPromise, configPromise]).then(() => {
+             blitzboard.setGraph(graph, false);
+             blitzboard.setConfig(Function('blitzboard', `"use strict";return (${config})`)(blitzboard), true);
+             blitzboard.network.stabilize();
          });
         </script>
     </body>
