@@ -10,12 +10,9 @@
         <script src='https://code.iconify.design/2/2.0.4/iconify.min.js'></script>
     </head>
     <body>
-        <div id='graph-area'></div>
+        <div id='graph-area' style="width: 98%; height: 600px; border: solid 1px silver;"></div>
         <script>
-         const child = document.createElement('div');
-         child.style = 'width: 800px; height: 600px; border: solid 1px silver;';
-         document.querySelector('#graph-area').appendChild(child);
-         let blitzboard = new Blitzboard(child);
+         let blitzboard = new Blitzboard(document.getElementById('graph-area'));
          let graph, config;
          let graphPromise = new Promise((resolve, reject) => {
              $.get(`https://raw.githubusercontent.com/hchiba1/blitzboard-samples/main/taxonomy/graph.pg`, (res) => {
