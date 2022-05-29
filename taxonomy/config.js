@@ -97,9 +97,9 @@
       function addEdge (child, parent) {
         if (child && parent && !blitzboard.hasEdge(child, parent)) {
           blitzboard.addEdge({
-            from: child,
-            to: parent,
-            labels: ['parent taxon'],
+            from: parent,
+            to: child,
+            labels: ['child taxon'],
           });
         }
       }
