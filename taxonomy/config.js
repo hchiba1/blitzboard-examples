@@ -148,6 +148,6 @@
     parentCentralization: true,
     direction: 'LR',        // UD, DU, LR, RL
     sortMethod: 'directed',  // hubsize, directed
-    shakeTowards: 'leaves'  // roots, leaves
+    shakeTowards: 'roots'  // roots, leaves
   },
 }
