@@ -28,7 +28,7 @@
 
       function getParentNode(taxid) {
         const query = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
-        const promise = fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`).then(res => {
+        const promise = fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
@@ -42,7 +42,7 @@
 
       function getChildNode(taxid) {
         const query2 = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
-        const promise = fetch(`https://orth.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`).then(res => {
+        const promise = fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
