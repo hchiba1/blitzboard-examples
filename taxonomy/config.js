@@ -5,30 +5,16 @@
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
-      const promiseParent = getParentNode(n.id);
-      const promiseChild = getChildNode(n.id);
+      const promiseParent = addParentNode(n.id);
+      const promiseChild = addChildNode(n.id);
       Promise.all([promiseParent, promiseChild]).then(() => {
         blitzboard.update();
         blitzboard.hideLoader();
       });
 
-      function sparqlTaxonomyTree(child, parent) {
-        return `
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX taxid: <http://identifiers.org/taxonomy/>
-        PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-        SELECT ?url ?rank ?name
-        WHERE {
-          ${child} rdfs:subClassOf ${parent} .
-          ?url rdfs:label ?name .
-          ?url taxon:rank/rdfs:label ?rank .
-        }
-        `;
-      }
-
-      function getParentNode(taxid) {
-        const query = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
-        const promise = fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(query)}&format=json`).then(res => {
+      function addParentNode(taxid) {
+        const sparql = sparqlTaxonomyTree(`taxid:${taxid}`, '?url');
+        const promise = fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
@@ -40,9 +26,9 @@
         return promise;
       }
 
-      function getChildNode(taxid) {
-        const query2 = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
-        const promise = fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(query2)}&format=json`).then(res => {
+      function addChildNode(taxid) {
+        const sparql = sparqlTaxonomyTree('?url', `taxid:${taxid}`);
+        const promise = fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           for (let elem of result.results.bindings) {
@@ -128,7 +114,20 @@
           callback(result);
         });
       }
-    
+
+      function sparqlTaxonomyTree(child, parent) {
+        return `
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX taxid: <http://identifiers.org/taxonomy/>
+        PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
+        SELECT ?url ?rank ?name
+        WHERE {
+          ${child} rdfs:subClassOf ${parent} .
+          ?url rdfs:label ?name .
+          ?url taxon:rank/rdfs:label ?rank .
+        }
+        `;
+      }
     }
 
   },
