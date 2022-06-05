@@ -77,7 +77,7 @@
           }
           blitzboard.addNode(node, false);
           callback(id);
-        });;
+        });
       }
 
       function addEdge (child, parent) {
@@ -109,6 +109,23 @@
           }
         }`;
         fetch(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`).then(res => {
+          return res.json();
+        }).then(result => {
+          callback(result);
+        });
+      }
+
+      function getComment(name, callback) {
+        name = name.replace(/ /g, '_');
+        const sparql = `
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX dbpedia: <http://dbpedia.org/resource/>
+        SELECT ?comment
+        WHERE {
+          dbpedia:${name} rdfs:comment ?comment .
+          FILTER (lang(?comment) = "ja")
+        }`;
+        fetch(`https://dbpedia.org/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
           return res.json();
         }).then(result => {
           callback(result);
