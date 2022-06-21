@@ -166,4 +166,9 @@
     sortMethod: 'directed',  // hubsize, directed
     shakeTowards: 'roots'  // roots, leaves
   },
+  extraOptions: {
+    interaction: {
+      navigationButtons: true
+    }
+  }
 }
