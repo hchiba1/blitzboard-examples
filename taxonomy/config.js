@@ -168,6 +168,9 @@
   },
   extraOptions: {
     interaction: {
+      selectConnectedEdges: false,
+      hover: true,
+      hoverConnectedEdges: false,
       navigationButtons: true
     }
   }
