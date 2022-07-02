@@ -171,6 +171,7 @@
       selectConnectedEdges: false,
       hover: true,
       hoverConnectedEdges: false,
+      keyboard: true,
       navigationButtons: true
     }
   }
