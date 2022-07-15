@@ -6,7 +6,7 @@
     title: (n) => {
       let title = createTitle(n);
       if (n.thumbnail) {
-        return title += `<a target="_blank" href="${n.thumbnail}"><img width=200 src='${n.thumbnail}'></a>`;
+        return title += `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
       }
       return title;
       function createTitle(elem) {
