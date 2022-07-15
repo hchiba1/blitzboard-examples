@@ -190,6 +190,7 @@
   edge: {
     caption: [],
     width: 3,
+    selectionWidth: 0,
     opacity: 0.6
   },
   layout: 'hierarchical',
