@@ -1,0 +1,243 @@
+LEU2_ECOLI :ECOLI main:1 group:1 score:1.000  size:25.0 color:"#673AA6"
+LEU2_YEAST :YEAST main:1 group:1 score:1.000  size:25.0 color:"#79A63A"
+ADH3_ECOLI :ECOLI main:2 group:2 score:1.000  size:25.0 color:"#673AA6"
+FADH_YEAST :YEAST main:2 group:2 score:1.000  size:25.0 color:"#79A63A"
+6PGD_ECOLI :ECOLI main:3 group:3 score:1.000  size:25.0 color:"#673AA6"
+6PG9_ECOLI :ECOLI  group:3 score:0.903 dist:0.097000 size:23.1 color:"#673AA6"
+6PG1_YEAST :YEAST main:3 group:3 score:1.000  size:25.0 color:"#79A63A"
+6PG2_YEAST :YEAST  group:3 score:0.816 dist:0.184000 size:21.3 color:"#79A63A"
+FTSH_ECOLI :ECOLI main:4 group:4 score:1.000  size:25.0 color:"#673AA6"
+YME1_YEAST :YEAST main:4 group:4 score:1.000  size:25.0 color:"#79A63A"
+ADH2_ECOLI :ECOLI main:5 group:5 score:1.000  size:25.0 color:"#673AA6"
+ADH4_YEAST :YEAST main:5 group:5 score:1.000  size:25.0 color:"#79A63A"
+LYSP_ECOLI :ECOLI main:6 group:6 score:1.000  size:25.0 color:"#673AA6"
+CAN1_YEAST :YEAST main:6 group:6 score:1.000  size:25.0 color:"#79A63A"
+ALP1_YEAST :YEAST  group:6 score:0.527 dist:0.473000 size:15.5 color:"#79A63A"
+LYP1_YEAST :YEAST  group:6 score:0.489 dist:0.511000 size:14.8 color:"#79A63A"
+DIP5_YEAST :YEAST  group:6 score:0.054 dist:0.946000 size:6.1 color:"#79A63A"
+YHES_ECOLI :ECOLI main:7 group:7 score:1.000  size:25.0 color:"#673AA6"
+GC20_YEAST :YEAST main:7 group:7 score:1.000  size:25.0 color:"#79A63A"
+ALF_ECOLI :ECOLI main:8 group:8 score:1.000  size:25.0 color:"#673AA6"
+ALF_YEAST :YEAST main:8 group:8 score:1.000  size:25.0 color:"#79A63A"
+FABF_ECOLI :ECOLI main:9 group:9 score:1.000  size:25.0 color:"#673AA6"
+CEM1_YEAST :YEAST main:9 group:9 score:1.000  size:25.0 color:"#79A63A"
+HLYB_ECOLI :ECOLI main:10 group:10 score:1.000  size:25.0 color:"#673AA6"
+HLY2_ECOLI :ECOLI  group:10 score:0.987 dist:0.013000 size:24.7 color:"#673AA6"
+ATM1_YEAST :YEAST main:10 group:10 score:1.000  size:25.0 color:"#79A63A"
+MSBA_ECOLI :ECOLI main:11 group:11 score:1.000  size:25.0 color:"#673AA6"
+MDL2_YEAST :YEAST main:11 group:11 score:1.000  size:25.0 color:"#79A63A"
+MDL1_YEAST :YEAST  group:11 score:0.203 dist:0.797000 size:9.1 color:"#79A63A"
+ADHP_ECOLI :ECOLI main:12 group:12 score:1.000  size:25.0 color:"#673AA6"
+ADH2_YEAST :YEAST main:12 group:12 score:1.000  size:25.0 color:"#79A63A"
+ADH1_YEAST :YEAST  group:12 score:0.919 dist:0.081000 size:23.4 color:"#79A63A"
+ADH5_YEAST :YEAST  group:12 score:0.733 dist:0.267000 size:19.7 color:"#79A63A"
+ADH3_YEAST :YEAST  group:12 score:0.729 dist:0.271000 size:19.6 color:"#79A63A"
+ACO1_ECOLI :ECOLI main:13 group:13 score:1.000  size:25.0 color:"#673AA6"
+ACON_YEAST :YEAST main:13 group:13 score:1.000  size:25.0 color:"#79A63A"
+ACOX_YEAST :YEAST  group:13 score:0.457 dist:0.543000 size:14.1 color:"#79A63A"
+DKGA_ECOLI :ECOLI main:14 group:14 score:1.000  size:25.0 color:"#673AA6"
+YPR1_YEAST :YEAST main:14 group:14 score:1.000  size:25.0 color:"#79A63A"
+GCY_YEAST :YEAST  group:14 score:0.525 dist:0.475000 size:15.5 color:"#79A63A"
+YDJJ_ECOLI :ECOLI main:15 group:15 score:1.000  size:25.0 color:"#673AA6"
+DHSO_YEAST :YEAST main:15 group:15 score:1.000  size:25.0 color:"#79A63A"
+YAHK_ECOLI :ECOLI main:16 group:16 score:1.000  size:25.0 color:"#673AA6"
+YCZ5_YEAST :YEAST main:16 group:16 score:1.000  size:25.0 color:"#79A63A"
+YM97_YEAST :YEAST  group:16 score:0.555 dist:0.445000 size:16.1 color:"#79A63A"
+QOR_ECOLI :ECOLI main:17 group:17 score:1.000  size:25.0 color:"#673AA6"
+QOR_YEAST :YEAST main:17 group:17 score:1.000  size:25.0 color:"#79A63A"
+YEJF_ECOLI :ECOLI main:18 group:18 score:1.000  size:25.0 color:"#673AA6"
+YLIA_ECOLI :ECOLI  group:18 score:0.341 dist:0.659000 size:11.8 color:"#673AA6"
+STE6_YEAST :YEAST main:18 group:18 score:1.000  size:25.0 color:"#79A63A"
+YAJO_ECOLI :ECOLI main:19 group:19 score:1.000  size:25.0 color:"#673AA6"
+AADE_YEAST :YEAST main:19 group:19 score:1.000  size:25.0 color:"#79A63A"
+AAD4_YEAST :YEAST  group:19 score:0.787 dist:0.213000 size:20.7 color:"#79A63A"
+AAD3_YEAST :YEAST  group:19 score:0.675 dist:0.325000 size:18.5 color:"#79A63A"
+AADA_YEAST :YEAST  group:19 score:0.626 dist:0.374000 size:17.5 color:"#79A63A"
+LEU1_ECOLI :ECOLI main:20 group:20 score:1.000  size:25.0 color:"#673AA6"
+HOSC_YEAST :YEAST main:20 group:20 score:1.000  size:25.0 color:"#79A63A"
+HOSM_YEAST :YEAST main:20 group:20 score:1.000  size:25.0 color:"#79A63A"
+YBHF_ECOLI :ECOLI main:21 group:21 score:1.000  size:25.0 color:"#673AA6"
+YHIH_ECOLI :ECOLI  group:21 score:0.225 dist:0.775000 size:9.5 color:"#673AA6"
+YOH5_YEAST :YEAST main:21 group:21 score:1.000  size:25.0 color:"#79A63A"
+YN99_YEAST :YEAST  group:21 score:0.053 dist:0.947000 size:6.1 color:"#79A63A"
+UBIB_ECOLI :ECOLI main:22 group:22 score:1.000  size:25.0 color:"#673AA6"
+YP09_YEAST :YEAST main:22 group:22 score:1.000  size:25.0 color:"#79A63A"
+YDDA_ECOLI :ECOLI main:23 group:23 score:1.000  size:25.0 color:"#673AA6"
+PXA1_YEAST :YEAST main:23 group:23 score:1.000  size:25.0 color:"#79A63A"
+PXA2_YEAST :YEAST  group:23 score:0.079 dist:0.921000 size:6.6 color:"#79A63A"
+SAPF_ECOLI :ECOLI main:24 group:24 score:1.000  size:25.0 color:"#673AA6"
+DPPF_ECOLI :ECOLI  group:24 score:0.321 dist:0.679000 size:11.4 color:"#673AA6"
+OPPF_ECOLI :ECOLI  group:24 score:0.274 dist:0.726000 size:10.5 color:"#673AA6"
+YDDO_ECOLI :ECOLI  group:24 score:0.265 dist:0.735000 size:10.3 color:"#673AA6"
+OPPD_ECOLI :ECOLI  group:24 score:0.164 dist:0.836000 size:8.3 color:"#673AA6"
+DPPD_ECOLI :ECOLI  group:24 score:0.162 dist:0.838000 size:8.2 color:"#673AA6"
+PROV_ECOLI :ECOLI  group:24 score:0.151 dist:0.849000 size:8.0 color:"#673AA6"
+NIKE_ECOLI :ECOLI  group:24 score:0.142 dist:0.858000 size:7.8 color:"#673AA6"
+ABC_ECOLI :ECOLI  group:24 score:0.127 dist:0.873000 size:7.5 color:"#673AA6"
+AFUC_ECOLI :ECOLI  group:24 score:0.119 dist:0.881000 size:7.4 color:"#673AA6"
+YDDP_ECOLI :ECOLI  group:24 score:0.116 dist:0.884000 size:7.3 color:"#673AA6"
+POTA_ECOLI :ECOLI  group:24 score:0.110 dist:0.890000 size:7.2 color:"#673AA6"
+POTG_ECOLI :ECOLI  group:24 score:0.106 dist:0.894000 size:7.1 color:"#673AA6"
+SAPD_ECOLI :ECOLI  group:24 score:0.101 dist:0.899000 size:7.0 color:"#673AA6"
+PHNK_ECOLI :ECOLI  group:24 score:0.097 dist:0.903000 size:6.9 color:"#673AA6"
+LOLD_ECOLI :ECOLI  group:24 score:0.093 dist:0.907000 size:6.9 color:"#673AA6"
+GLNQ_ECOLI :ECOLI  group:24 score:0.088 dist:0.912000 size:6.8 color:"#673AA6"
+HISP_ECOLI :ECOLI  group:24 score:0.088 dist:0.912000 size:6.8 color:"#673AA6"
+MALK_ECOLI :ECOLI  group:24 score:0.082 dist:0.918000 size:6.6 color:"#673AA6"
+YECC_ECOLI :ECOLI  group:24 score:0.080 dist:0.920000 size:6.6 color:"#673AA6"
+YHDZ_ECOLI :ECOLI  group:24 score:0.080 dist:0.920000 size:6.6 color:"#673AA6"
+YEHX_ECOLI :ECOLI  group:24 score:0.078 dist:0.922000 size:6.6 color:"#673AA6"
+YDCT_ECOLI :ECOLI  group:24 score:0.075 dist:0.925000 size:6.5 color:"#673AA6"
+SSUB_ECOLI :ECOLI  group:24 score:0.071 dist:0.929000 size:6.4 color:"#673AA6"
+YBBA_ECOLI :ECOLI  group:24 score:0.067 dist:0.933000 size:6.3 color:"#673AA6"
+ARTP_ECOLI :ECOLI  group:24 score:0.067 dist:0.933000 size:6.3 color:"#673AA6"
+GLTL_ECOLI :ECOLI  group:24 score:0.065 dist:0.935000 size:6.3 color:"#673AA6"
+FHUC_ECOLI :ECOLI  group:24 score:0.062 dist:0.938000 size:6.2 color:"#673AA6"
+CYSA_ECOLI :ECOLI  group:24 score:0.062 dist:0.938000 size:6.2 color:"#673AA6"
+UGPC_ECOLI :ECOLI  group:24 score:0.062 dist:0.938000 size:6.2 color:"#673AA6"
+PSTB_ECOLI :ECOLI  group:24 score:0.060 dist:0.940000 size:6.2 color:"#673AA6"
+YCJV_ECOLI :ECOLI  group:24 score:0.056 dist:0.944000 size:6.1 color:"#673AA6"
+FTSE_ECOLI :ECOLI  group:24 score:0.056 dist:0.944000 size:6.1 color:"#673AA6"
+YRBF_ECOLI :ECOLI  group:24 score:0.052 dist:0.948000 size:6.0 color:"#673AA6"
+YFC8_YEAST :YEAST main:24 group:24 score:1.000  size:25.0 color:"#79A63A"
+CODB_ECOLI :ECOLI main:25 group:25 score:1.000  size:25.0 color:"#673AA6"
+THIY_YEAST :YEAST main:25 group:25 score:1.000  size:25.0 color:"#79A63A"
+THI7_YEAST :YEAST  group:25 score:0.889 dist:0.111000 size:22.8 color:"#79A63A"
+THIX_YEAST :YEAST  group:25 score:0.848 dist:0.152000 size:22.0 color:"#79A63A"
+DAL4_YEAST :YEAST  group:25 score:0.152 dist:0.848000 size:8.0 color:"#79A63A"
+FUR4_YEAST :YEAST  group:25 score:0.143 dist:0.857000 size:7.9 color:"#79A63A"
+FUI1_YEAST :YEAST  group:25 score:0.136 dist:0.864000 size:7.7 color:"#79A63A"
+6PG9_ECOLI -> 6PG1_YEAST score:447.2 width:6.0 
+6PG9_ECOLI -> 6PG2_YEAST score:443.7 width:6.0 
+6PGD_ECOLI -> 6PG1_YEAST score:462.6 width:6.1 color:"#000000"
+6PGD_ECOLI -> 6PG2_YEAST score:456.4 width:6.0 
+ABC_ECOLI -> YFC8_YEAST score:59.3 width:3.1 
+ACO1_ECOLI -> ACON_YEAST score:213.0 width:5.2 color:"#000000"
+ACO1_ECOLI -> ACOX_YEAST score:183.3 width:5.0 
+ADH2_ECOLI -> ADH4_YEAST score:410.6 width:5.9 color:"#000000"
+ADH3_ECOLI -> FADH_YEAST score:466.8 width:6.1 color:"#000000"
+ADHP_ECOLI -> ADH2_YEAST score:212.6 width:5.2 color:"#000000"
+ADHP_ECOLI -> ADH5_YEAST score:209.5 width:5.1 
+ADHP_ECOLI -> ADH3_YEAST score:207.2 width:5.1 
+ADHP_ECOLI -> ADH1_YEAST score:204.1 width:5.1 
+AFUC_ECOLI -> YFC8_YEAST score:58.5 width:3.0 
+ALF_ECOLI -> ALF_YEAST score:302.4 width:5.6 color:"#000000"
+ARTP_ECOLI -> YFC8_YEAST score:68.6 width:3.4 
+CODB_ECOLI -> THIY_YEAST score:60.1 width:3.1 color:"#000000"
+CYSA_ECOLI -> YFC8_YEAST score:55.1 width:2.8 
+DKGA_ECOLI -> YPR1_YEAST score:206.8 width:5.1 color:"#000000"
+DKGA_ECOLI -> GCY_YEAST score:206.1 width:5.1 
+DPPD_ECOLI -> YFC8_YEAST score:47.0 width:2.2 
+DPPF_ECOLI -> YFC8_YEAST score:43.1 width:1.6 
+FABF_ECOLI -> CEM1_YEAST score:299.7 width:5.6 color:"#000000"
+FHUC_ECOLI -> YFC8_YEAST score:45.8 width:2.1 
+FTSH_ECOLI -> YME1_YEAST score:445.7 width:6.0 color:"#000000"
+GLNQ_ECOLI -> YFC8_YEAST score:50.8 width:2.5 
+GLTL_ECOLI -> YFC8_YEAST score:48.5 width:2.4 
+HISP_ECOLI -> YFC8_YEAST score:53.1 width:2.7 
+HLY2_ECOLI -> ATM1_YEAST score:255.4 width:5.4 
+HLYB_ECOLI -> ATM1_YEAST score:255.8 width:5.4 color:"#000000"
+LEU1_ECOLI -> HOSC_YEAST score:139.0 width:4.6 color:"#000000"
+LEU1_ECOLI -> HOSM_YEAST score:139.0 width:4.6 color:"#000000"
+LEU2_ECOLI -> LEU2_YEAST score:590.1 width:6.3 color:"#000000"
+LOLD_ECOLI -> YFC8_YEAST score:58.5 width:3.0 
+LYSP_ECOLI -> CAN1_YEAST score:339.3 width:5.7 color:"#000000"
+LYSP_ECOLI -> DIP5_YEAST score:324.3 width:5.7 
+LYSP_ECOLI -> LYP1_YEAST score:323.2 width:5.7 
+LYSP_ECOLI -> ALP1_YEAST score:320.5 width:5.6 
+MALK_ECOLI -> YFC8_YEAST score:45.4 width:2.0 
+MSBA_ECOLI -> MDL2_YEAST score:252.3 width:5.4 color:"#000000"
+MSBA_ECOLI -> MDL1_YEAST score:249.2 width:5.4 
+NIKE_ECOLI -> YFC8_YEAST score:54.3 width:2.8 
+OPPD_ECOLI -> YFC8_YEAST score:48.1 width:2.3 
+PHNK_ECOLI -> YFC8_YEAST score:54.3 width:2.8 
+POTA_ECOLI -> YFC8_YEAST score:53.5 width:2.7 
+POTG_ECOLI -> YFC8_YEAST score:61.2 width:3.1 
+PROV_ECOLI -> YFC8_YEAST score:54.7 width:2.8 
+PSTB_ECOLI -> YFC8_YEAST score:47.0 width:2.2 
+QOR_ECOLI -> QOR_YEAST score:183.0 width:5.0 color:"#000000"
+SAPF_ECOLI -> YFC8_YEAST score:63.2 width:3.2 color:"#000000"
+SSUB_ECOLI -> YFC8_YEAST score:52.8 width:2.7 
+UBIB_ECOLI -> YP09_YEAST score:127.9 width:4.5 color:"#000000"
+UGPC_ECOLI -> YFC8_YEAST score:54.3 width:2.8 
+YAHK_ECOLI -> YCZ5_YEAST score:189.9 width:5.0 color:"#000000"
+YAHK_ECOLI -> YM97_YEAST score:188.3 width:5.0 
+YAJO_ECOLI -> AADE_YEAST score:140.2 width:4.6 color:"#000000"
+YAJO_ECOLI -> AAD4_YEAST score:132.5 width:4.5 
+YAJO_ECOLI -> AAD3_YEAST score:127.9 width:4.5 
+YAJO_ECOLI -> AADA_YEAST score:115.5 width:4.4 
+YBHF_ECOLI -> YOH5_YEAST score:137.1 width:4.6 color:"#000000"
+YBHF_ECOLI -> YN99_YEAST score:69.3 width:3.4 
+YCJV_ECOLI -> YFC8_YEAST score:51.6 width:2.6 
+YDCT_ECOLI -> YFC8_YEAST score:47.0 width:2.2 
+YDDA_ECOLI -> PXA1_YEAST score:97.0 width:4.1 color:"#000000"
+YDDA_ECOLI -> PXA2_YEAST score:84.7 width:3.8 
+YDDO_ECOLI -> YFC8_YEAST score:47.4 width:2.2 
+YDDP_ECOLI -> YFC8_YEAST score:42.4 width:1.5 
+YDJJ_ECOLI -> DHSO_YEAST score:198.0 width:5.1 color:"#000000"
+YECC_ECOLI -> YFC8_YEAST score:46.2 width:2.1 
+YEHX_ECOLI -> YFC8_YEAST score:48.9 width:2.4 
+YEJF_ECOLI -> STE6_YEAST score:147.1 width:4.7 color:"#000000"
+YHES_ECOLI -> GC20_YEAST score:330.1 width:5.7 color:"#000000"
+YHIH_ECOLI -> YN99_YEAST score:92.0 width:4.0 
+YHIH_ECOLI -> YOH5_YEAST score:71.2 width:3.5 
+YLIA_ECOLI -> STE6_YEAST score:144.4 width:4.7 
+6PG1_YEAST -> 6PG2_YEAST score:892.9 width:6.8 color:"#79A63A"
+AAD3_YEAST -> AADE_YEAST score:559.3 width:6.3 color:"#79A63A"
+AAD4_YEAST -> AADE_YEAST score:629.0 width:6.4 color:"#79A63A"
+AADA_YEAST -> AADE_YEAST score:529.2 width:6.2 color:"#79A63A"
+ACON_YEAST -> ACOX_YEAST score:838.2 width:6.7 color:"#79A63A"
+ADH1_YEAST -> ADH2_YEAST score:667.2 width:6.4 color:"#79A63A"
+ADH2_YEAST -> ADH5_YEAST score:574.7 width:6.3 color:"#79A63A"
+ADH2_YEAST -> ADH3_YEAST score:572.8 width:6.3 color:"#79A63A"
+ALP1_YEAST -> CAN1_YEAST score:788.5 width:6.6 color:"#79A63A"
+CAN1_YEAST -> LYP1_YEAST score:757.3 width:6.6 color:"#79A63A"
+CAN1_YEAST -> DIP5_YEAST score:385.2 width:5.8 color:"#79A63A"
+DAL4_YEAST -> THIY_YEAST score:240.0 width:5.3 color:"#79A63A"
+FUI1_YEAST -> THIY_YEAST score:221.1 width:5.2 color:"#79A63A"
+FUR4_YEAST -> THIY_YEAST score:229.6 width:5.3 color:"#79A63A"
+GCY_YEAST -> YPR1_YEAST score:428.7 width:6.0 color:"#79A63A"
+HOSC_YEAST -> HOSM_YEAST score:766.9 width:6.6 color:"#79A63A"
+MDL1_YEAST -> MDL2_YEAST score:524.6 width:6.2 color:"#79A63A"
+PXA1_YEAST -> PXA2_YEAST score:207.2 width:5.1 color:"#79A63A"
+THI7_YEAST -> THIY_YEAST score:1114.8 width:7.0 color:"#79A63A"
+THIX_YEAST -> THIY_YEAST score:1067.0 width:6.9 color:"#79A63A"
+YCZ5_YEAST -> YM97_YEAST score:495.4 width:6.1 color:"#79A63A"
+YN99_YEAST -> YOH5_YEAST score:265.8 width:5.4 color:"#79A63A"
+6PG9_ECOLI -> 6PGD_ECOLI score:880.9 width:6.7 color:"#673AA6"
+ABC_ECOLI -> SAPF_ECOLI score:121.7 width:4.4 color:"#673AA6"
+AFUC_ECOLI -> SAPF_ECOLI score:117.9 width:4.4 color:"#673AA6"
+ARTP_ECOLI -> SAPF_ECOLI score:94.0 width:4.0 color:"#673AA6"
+CYSA_ECOLI -> SAPF_ECOLI score:92.4 width:4.0 color:"#673AA6"
+DPPD_ECOLI -> SAPF_ECOLI score:138.3 width:4.6 color:"#673AA6"
+DPPF_ECOLI -> SAPF_ECOLI score:211.8 width:5.2 color:"#673AA6"
+FHUC_ECOLI -> SAPF_ECOLI score:92.4 width:4.0 color:"#673AA6"
+FTSE_ECOLI -> SAPF_ECOLI score:88.6 width:3.9 color:"#673AA6"
+GLNQ_ECOLI -> SAPF_ECOLI score:104.0 width:4.2 color:"#673AA6"
+GLTL_ECOLI -> SAPF_ECOLI score:92.8 width:4.0 color:"#673AA6"
+HISP_ECOLI -> SAPF_ECOLI score:103.6 width:4.2 color:"#673AA6"
+HLY2_ECOLI -> HLYB_ECOLI score:1360.9 width:7.2 color:"#673AA6"
+LOLD_ECOLI -> SAPF_ECOLI score:105.9 width:4.2 color:"#673AA6"
+MALK_ECOLI -> SAPF_ECOLI score:100.5 width:4.1 color:"#673AA6"
+NIKE_ECOLI -> SAPF_ECOLI score:129.0 width:4.5 color:"#673AA6"
+OPPD_ECOLI -> SAPF_ECOLI score:139.4 width:4.6 color:"#673AA6"
+OPPF_ECOLI -> SAPF_ECOLI score:189.9 width:5.0 color:"#673AA6"
+PHNK_ECOLI -> SAPF_ECOLI score:107.8 width:4.2 color:"#673AA6"
+POTA_ECOLI -> SAPF_ECOLI score:113.6 width:4.3 color:"#673AA6"
+POTG_ECOLI -> SAPF_ECOLI score:112.1 width:4.3 color:"#673AA6"
+PROV_ECOLI -> SAPF_ECOLI score:132.5 width:4.5 color:"#673AA6"
+PSTB_ECOLI -> SAPF_ECOLI score:90.5 width:4.0 color:"#673AA6"
+SAPD_ECOLI -> SAPF_ECOLI score:110.2 width:4.3 color:"#673AA6"
+SAPF_ECOLI -> YDDO_ECOLI score:186.0 width:5.0 color:"#673AA6"
+SAPF_ECOLI -> YDDP_ECOLI score:117.1 width:4.4 color:"#673AA6"
+SAPF_ECOLI -> YECC_ECOLI score:99.8 width:4.1 color:"#673AA6"
+SAPF_ECOLI -> YHDZ_ECOLI score:99.8 width:4.1 color:"#673AA6"
+SAPF_ECOLI -> YEHX_ECOLI score:99.4 width:4.1 color:"#673AA6"
+SAPF_ECOLI -> YDCT_ECOLI score:97.8 width:4.1 color:"#673AA6"
+SAPF_ECOLI -> SSUB_ECOLI score:95.5 width:4.1 color:"#673AA6"
+SAPF_ECOLI -> YBBA_ECOLI score:94.0 width:4.0 color:"#673AA6"
+SAPF_ECOLI -> UGPC_ECOLI score:91.7 width:4.0 color:"#673AA6"
+SAPF_ECOLI -> YCJV_ECOLI score:89.0 width:3.9 color:"#673AA6"
+SAPF_ECOLI -> YRBF_ECOLI score:87.4 width:3.9 color:"#673AA6"
+YBHF_ECOLI -> YHIH_ECOLI score:365.9 width:5.8 color:"#673AA6"
+YEJF_ECOLI -> YLIA_ECOLI score:444.9 width:6.0 color:"#673AA6"
