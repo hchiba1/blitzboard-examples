@@ -159,6 +159,7 @@
                              document.querySelector('#main-area').appendChild(area);
                              let sandboxUrl = `https://hchiba1.github.io/blitzboard/?sample=${encodeURIComponent(sampleName)}`;
                              link.href = sandboxUrl;
+                             link.target = "_blank";
                              link.innerText = sampleName;
                              let blitzboard = new Blitzboard(innerContainer);
                              loadSample(sampleName, (graph, config) => {
