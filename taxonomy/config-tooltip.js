@@ -24,7 +24,12 @@
         if(Array.isArray(text))
           text = text[0];
         if(text.startsWith('http://') || text.startsWith('https://') ) {
-          return `<a target="_blank" href="${text}">${wrapText(text)}</a>`;
+          const url = text;
+          const m = text.match(/.*\/(\S+)$/);
+          if (m) {
+            text = m[1];
+          }
+          return `<a target="_blank" href="${url}">${wrapText(text)}</a>`;
         }
         return wrapText(text);
       }
