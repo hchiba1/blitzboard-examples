@@ -4,19 +4,19 @@
     defaultIcon: true,
     // title: (n) => blitzboard.createTitle(n) + (n.thumbnail ? `<img width=200 src='${n.thumbnail}'>` : ''),
     title: (n) => {
-      let title = createTitle(n);
-      if (n.thumbnail) {
-        return title += `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
-      }
-      return title;
+      return createTitle(n);
       function createTitle(elem) {
         let idText = `<tr><td><b>${elem.id}</b></td><td> <b>${wrapText(elem.labels.map((l) => ':' + l).join(' '), true)}</b></td></tr>`;
-        let props = Object.entries(elem.properties).reduce((acc, prop) =>
-                                                                    acc.concat(`<tr valign="top"><td>${prop[0]}</td><td> ${convertToHyperLinkIfURL(prop[1])}</td></tr>`), []);
-        if (props.length === 0) {
-          return null;
-        }
-        return `<table style='fixed'>${idText}${props.join('')}</table>`;
+        let props = [];
+        let img = '';
+        Object.entries(elem.properties).forEach(([key, value]) => {
+          if (key === 'thumbnail') {
+            img = `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
+          } else {
+            props.push(`<tr valign="top"><td>${key}</td><td> ${convertToHyperLinkIfURL(value)}</td></tr>`);
+          }
+        });
+        return `<table style='fixed'>${idText}${props.join('')}</table>${img}`;
       }
       function convertToHyperLinkIfURL(text) {
         if(!text)
