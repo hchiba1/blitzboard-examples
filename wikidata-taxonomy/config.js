@@ -64,11 +64,11 @@
             node.properties.thumbnail = [b.thumb.value];
           }
           blitzboard.addNode(node, false);
-          if (!blitzboard.hasEdge(n.id, node.id)) {
+          if (!blitzboard.hasEdge(node.id, n.id)) {
             blitzboard.addEdge({
-              from: n.id,
-              to: node.id,
-              labels: ['parent taxon'],
+              from: node.id,
+              to: n.id,
+              labels: ['child taxon'],
             });
           }
         }
@@ -99,11 +99,11 @@
             node.properties.thumbnail = [b.thumb.value];
           }
           blitzboard.addNode(node, false);
-          if (!blitzboard.hasEdge(node.id, n.id)) {
+          if (!blitzboard.hasEdge(n.id, node.id)) {
             blitzboard.addEdge({
-              from: node.id,
-              to: n.id,
-              labels: ['parent taxon'],
+              from: n.id,
+              to: node.id,
+              labels: ['child taxon'],
             });
           }
         }
@@ -126,9 +126,9 @@
     blockShifting: true,
     edgeMinimization: true,
     parentCentralization: true,
-    direction: 'RL',        // UD, DU, LR, RL
+    direction: 'LR',        // UD, DU, LR, RL
     sortMethod: 'directed',  // hubsize, directed
-    shakeTowards: 'leaves'  // roots, leaves
+    shakeTowards: 'roots'  // roots, leaves
   },
   extraOptions: {
     interaction: {
