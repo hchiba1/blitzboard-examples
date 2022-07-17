@@ -6,12 +6,13 @@
     title: (n) => {
       return createTitle(n);
       function createTitle(elem) {
-        let idText = `<tr><td><b>${elem.id}</b></td><td> <b>${wrapText(elem.labels.map((l) => ':' + l).join(' '), true)}</b></td></tr>`;
+        let idText = `<tr><td><b><a target"_blank" href="http://identifiers.org/taxonomy/${elem.id}">${elem.id}</a></b></td><td> <b>${wrapText(elem.labels.map((l) => ':' + l).join(' '), true)}</b></td></tr>`;
         let props = [];
         let img = '';
         Object.entries(elem.properties).forEach(([key, value]) => {
           if (key === 'thumbnail') {
             img = `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
+          } else if (key === 'tax ID') {
           } else {
             props.push(`<tr valign="top"><td>${key}</td><td> ${convertToHyperLinkIfURL(value)}</td></tr>`);
           }
@@ -25,7 +26,7 @@
           text = text[0];
         if(text.startsWith('http://') || text.startsWith('https://') ) {
           const url = text;
-          const m = text.match(/.*\/(\S+)$/);
+          const m = text.match(/.*wikidata.org\/entity\/(\S+)$/);
           if (m) {
             text = m[1];
           }
