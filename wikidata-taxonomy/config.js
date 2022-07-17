@@ -115,7 +115,7 @@
 
   },
   edge: {
-    caption: ['label'],
+    caption: [],
   },
   layout: 'hierarchical',
   layoutSettings: {
@@ -126,8 +126,17 @@
     blockShifting: true,
     edgeMinimization: true,
     parentCentralization: true,
-    direction: 'DU',        // UD, DU, LR, RL
+    direction: 'RL',        // UD, DU, LR, RL
     sortMethod: 'directed',  // hubsize, directed
     shakeTowards: 'leaves'  // roots, leaves
   },
+  extraOptions: {
+    interaction: {
+      selectConnectedEdges: false,
+      hover: true,
+      hoverConnectedEdges: false,
+      keyboard: true,
+      navigationButtons: true
+    }
+  }
 }
