@@ -6,5 +6,11 @@
   edge: {
     caption: ['label'],
   },
-  layout: 'default'
+  layout: 'default',
+  style: "background: white;",
+  extraOptions: {
+    interaction: {
+      navigationButtons: true
+    }
+  }
 }
