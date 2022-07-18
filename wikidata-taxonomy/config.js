@@ -5,12 +5,10 @@
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
-
-      const query = createSparq(`wd:${n.id}`, '?url');
-      const query2 = createSparq('?url', `wd:${n.id}`);
-
       const endpoint = 'https://query.wikidata.org/sparql';
-      $.get(`${endpoint}?query=${encodeURIComponent(query)}&format=json`, (result) => {
+
+      const queryGetChild = createSparq(`wd:${n.id}`, '?url');
+      $.get(`${endpoint}?query=${encodeURIComponent(queryGetChild)}&format=json`, (result) => {
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
           const node = createNode(b);
@@ -20,7 +18,8 @@
         blitzboard.hideLoader();
       });
       
-      $.get(`${endpoint}?query=${encodeURIComponent(query2)}&format=json`, (result) => {
+      const queryGetParent = createSparq('?url', `wd:${n.id}`);
+      $.get(`${endpoint}?query=${encodeURIComponent(queryGetParent)}&format=json`, (result) => {
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
           if (blitzboard.hasNode(id)) {
