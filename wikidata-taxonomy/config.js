@@ -116,6 +116,7 @@
   },
   edge: {
     caption: [],
+    opacity: 0.6
   },
   layout: 'hierarchical',
   layoutSettings: {
