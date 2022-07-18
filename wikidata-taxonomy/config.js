@@ -34,23 +34,7 @@
       $.get(`${endpoint}?query=${encodeURIComponent(query)}&format=json`, (result) => {
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
-          let node = {
-            id: id,
-            labels: ['Taxon'],
-            properties: {
-              url: [b.url.value],
-              'taxon rank': [b.rank.value],
-              'taxon name': [b.name.value],
-              name: [b.name_ja.value],
-            }
-          };
-          if (b.descr_ja?.value) {
-            node.properties.description = [b.descr_ja.value];
-          }
-          if (b.thumb?.value) {
-            node.properties.thumbnail = [b.thumb.value];
-          }
-          blitzboard.addNode(node, false);
+          const node = createNode(b);
           if (!blitzboard.hasEdge(node.id, n.id)) {
             blitzboard.addEdge({
               from: node.id,
@@ -69,23 +53,7 @@
           if (blitzboard.hasNode(id)) {
             continue;
           }
-          let node = {
-            id: id,
-            labels: ['Taxon'],
-            properties: {
-              url: [b.url.value],
-              'taxon rank': [b.rank.value],
-              'taxon name': [b.name.value],
-              name: [b.name_ja.value],
-            }
-          };
-          if (b.descr_ja?.value) {
-            node.properties.description = [b.descr_ja.value];
-          }
-          if (b.thumb?.value) {
-            node.properties.thumbnail = [b.thumb.value];
-          }
-          blitzboard.addNode(node, false);
+          const node = createNode(b);
           if (!blitzboard.hasEdge(n.id, node.id)) {
             blitzboard.addEdge({
               from: n.id,
@@ -98,6 +66,27 @@
         blitzboard.hideLoader();
       });
     
+      function createNode(b) {
+        let id = b.url.value.replace(/.*\//g, '');
+        let node = {
+          id: id,
+          labels: ['Taxon'],
+          properties: {
+            url: [b.url.value],
+            'taxon rank': [b.rank.value],
+            'taxon name': [b.name.value],
+            name: [b.name_ja.value],
+          }
+        };
+        if (b.descr_ja?.value) {
+          node.properties.description = [b.descr_ja.value];
+        }
+        if (b.thumb?.value) {
+          node.properties.thumbnail = [b.thumb.value];
+        }
+        blitzboard.addNode(node, false);
+        return node;
+      }
     }
 
   },
