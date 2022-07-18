@@ -6,44 +6,30 @@
     onClick: (n) => {
       blitzboard.showLoader();
 
-      let query = `
-      SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
-        wd:${n.id} wdt:P171 ?url .
-        ?url wdt:P31 wd:Q16521 ;
-             wdt:P105/rdfs:label ?rank ;
-             wdt:P225 ?name ;
-             rdfs:label ?name_ja .
-        OPTIONAL {
-          ?url wdt:P18 ?thumb .
+      function createSparq(child, parent) {
+        return `
+        SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
+          ${child} wdt:P171 ${parent} .
+          ?url wdt:P31 wd:Q16521 ;
+               wdt:P105/rdfs:label ?rank ;
+               wdt:P225 ?name ;
+               rdfs:label ?name_ja .
+          OPTIONAL {
+            ?url wdt:P18 ?thumb .
+          }
+          OPTIONAL {
+            ?url <http://schema.org/description> ?descr_ja .
+            FILTER(lang(?descr_ja) = 'ja')
+          }
+          FILTER(lang(?rank) = 'en')
+          FILTER(lang(?name_ja) = 'ja')
         }
-        OPTIONAL {
-          ?url <http://schema.org/description> ?descr_ja .
-          FILTER(lang(?descr_ja) = 'ja')
-        }
-        FILTER(lang(?rank) = 'en')
-        FILTER(lang(?name_ja) = 'ja')
+        `;
       }
-      `;
 
-      let query2 = `
-      SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
-        ?url wdt:P171 wd:${n.id} .
-        ?url wdt:P31 wd:Q16521 ;
-             wdt:P105/rdfs:label ?rank ;
-             wdt:P225 ?name ;
-             rdfs:label ?name_ja .
-        OPTIONAL {
-          ?url wdt:P18 ?thumb .
-        }
-        OPTIONAL {
-          ?url <http://schema.org/description> ?descr_ja .
-          FILTER(lang(?descr_ja) = 'ja')
-        }
-        FILTER(lang(?rank) = 'en')
-        FILTER(lang(?name_ja) = 'ja')
-      }
-      `;
-      
+      const query = createSparq(`wd:${n.id}`, '?url');
+      const query2 = createSparq('?url', `wd:${n.id}`);
+
       $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
