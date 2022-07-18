@@ -35,13 +35,7 @@
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
           const node = createNode(b);
-          if (!blitzboard.hasEdge(node.id, n.id)) {
-            blitzboard.addEdge({
-              from: node.id,
-              to: n.id,
-              labels: ['child taxon'],
-            });
-          }
+          createEdge(node.id, n.id);
         }
         blitzboard.update();
         blitzboard.hideLoader();
@@ -54,13 +48,7 @@
             continue;
           }
           const node = createNode(b);
-          if (!blitzboard.hasEdge(n.id, node.id)) {
-            blitzboard.addEdge({
-              from: n.id,
-              to: node.id,
-              labels: ['child taxon'],
-            });
-          }
+          createEdge(n.id, node.id);
         }
         blitzboard.update();
         blitzboard.hideLoader();
@@ -86,6 +74,16 @@
         }
         blitzboard.addNode(node, false);
         return node;
+      }
+
+      function createEdge(parent, child) {
+        if (!blitzboard.hasEdge(parent, child)) {
+          blitzboard.addEdge({
+            from: parent,
+            to: child,
+            labels: ['child taxon'],
+          });
+        }
       }
     }
 
