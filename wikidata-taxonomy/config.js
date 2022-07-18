@@ -30,7 +30,8 @@
       const query = createSparq(`wd:${n.id}`, '?url');
       const query2 = createSparq('?url', `wd:${n.id}`);
 
-      $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}&format=json`, (result) => {
+      const endpoint = 'https://query.wikidata.org/sparql';
+      $.get(`${endpoint}?query=${encodeURIComponent(query)}&format=json`, (result) => {
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
           let node = {
@@ -62,7 +63,7 @@
         blitzboard.hideLoader();
       });
       
-      $.get(`https://query.wikidata.org/sparql?query=${encodeURIComponent(query2)}&format=json`, (result) => {
+      $.get(`${endpoint}?query=${encodeURIComponent(query2)}&format=json`, (result) => {
         for (let b of result.results.bindings) {
           let id = b.url.value.replace(/.*\//g, '');
           if (blitzboard.hasNode(id)) {
