@@ -6,27 +6,6 @@
     onClick: (n) => {
       blitzboard.showLoader();
 
-      function createSparq(child, parent) {
-        return `
-        SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
-          ${child} wdt:P171 ${parent} .
-          ?url wdt:P31 wd:Q16521 ;
-               wdt:P105/rdfs:label ?rank ;
-               wdt:P225 ?name ;
-               rdfs:label ?name_ja .
-          OPTIONAL {
-            ?url wdt:P18 ?thumb .
-          }
-          OPTIONAL {
-            ?url <http://schema.org/description> ?descr_ja .
-            FILTER(lang(?descr_ja) = 'ja')
-          }
-          FILTER(lang(?rank) = 'en')
-          FILTER(lang(?name_ja) = 'ja')
-        }
-        `;
-      }
-
       const query = createSparq(`wd:${n.id}`, '?url');
       const query2 = createSparq('?url', `wd:${n.id}`);
 
@@ -53,6 +32,27 @@
         blitzboard.update();
         blitzboard.hideLoader();
       });
+
+      function createSparq(child, parent) {
+        return `
+        SELECT ?url ?rank ?name ?name_ja ?thumb ?descr_ja WHERE {
+          ${child} wdt:P171 ${parent} .
+          ?url wdt:P31 wd:Q16521 ;
+               wdt:P105/rdfs:label ?rank ;
+               wdt:P225 ?name ;
+               rdfs:label ?name_ja .
+          OPTIONAL {
+            ?url wdt:P18 ?thumb .
+          }
+          OPTIONAL {
+            ?url <http://schema.org/description> ?descr_ja .
+            FILTER(lang(?descr_ja) = 'ja')
+          }
+          FILTER(lang(?rank) = 'en')
+          FILTER(lang(?name_ja) = 'ja')
+        }
+        `;
+      }
     
       function createNode(b) {
         let id = b.url.value.replace(/.*\//g, '');
