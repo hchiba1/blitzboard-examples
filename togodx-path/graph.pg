@@ -1,0 +1,376 @@
+chebi
+  :Compound
+  name: "ChEBI compound"
+  N: 133484
+  size: 15.39
+  color: "#A63A94"
+chembl_compound
+  :Compound
+  name: "ChEMBL compound"
+  N: 2089492
+  size: 18.96
+  color: "#A63A94"
+chembl_target
+  :Protein
+  name: "ChEMBL target"
+  N: 9117
+  size: 11.88
+  color: "#79A63A"
+doid
+  :Disease
+  name: "Disease ontology"
+  N: 10670
+  size: 12.09
+  color: "#3A5EA6"
+ensembl_gene
+  :Gene
+  name: "Ensembl gene"
+  N: 9465790
+  size: 20.94
+  color: "#3AA64C"
+hgnc
+  :Gene
+  name: "HGNC"
+  N: 43531
+  size: 13.92
+  color: "#3AA64C"
+hp
+  :Disease
+  name: "Human Phenotype Ontology"
+  N: 16055
+  size: 12.63
+  color: "#3A5EA6"
+medgen
+  :Disease
+  name: "MedGen"
+  N: 43766
+  size: 13.92
+  color: "#3A5EA6"
+mesh
+  :Disease
+  name: "MeSH"
+  N: 11986
+  size: 12.24
+  color: "#3A5EA6"
+mondo
+  :Disease
+  name: "MONDO"
+  N: 22248
+  size: 13.05
+  color: "#3A5EA6"
+nando
+  :Disease
+  name: "NANDO"
+  N: 2210
+  size: 10.02
+  color: "#3A5EA6"
+ncbigene
+  :Gene
+  name: "NCBI gene"
+  N: 36038151
+  size: 22.68
+  color: "#3AA64C"
+omim_phenotype
+  :Disease
+  name: "OMIM phenotype"
+  N: 9632
+  size: 11.94
+  color: "#3A5EA6"
+orphanet
+  :Disease
+  name: "Orphanet"
+  N: 9597
+  size: 11.94
+  color: "#3A5EA6"
+pdb
+  :Structure
+  name: "PDB"
+  N: 178327
+  size: 15.75
+  color: "#A6823A"
+pubchem_compound
+  :Compound
+  name: "PubChem compound"
+  N: 110347980
+  size: 24.12
+  color: "#A63A94"
+reactome_reaction
+  :Interaction
+  name: "Reactome reaction"
+  N: 90211
+  size: 14.88
+  color: "#A63A43"
+togovar
+  :Variant
+  name: "TogoVar variant"
+  N: 91993850
+  size: 23.88
+  color: "#3AA69D"
+uniprot
+  :Protein
+  name: "UniProt"
+  N: 242407689
+  size: 25.14
+  color: "#79A63A"
+glytoucan
+  :Glycan
+  name: "GlyTouCan"
+  N: 33805
+  size: 13.59
+  color: "#673AA6"
+chembl_compound -> chebi
+  N: 30798
+  width: 4.49
+  color: "#A63A94"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+chembl_compound -> chembl_target
+  N: 2981856
+  width: 6.47
+  color: "#A63A94"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+chembl_compound -> mesh
+  N: 40023
+  width: 4.60
+  color: "#A63A94"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+chembl_compound -> pubchem_compound
+  N: 1877743
+  width: 6.27
+  color: "#A63A94"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+chembl_target -> ensembl_gene
+  N: 1876
+  width: 3.27
+  color: "#79A63A"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+chembl_target -> pdb
+  N: 24415
+  width: 4.39
+  color: "#79A63A"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+chembl_target -> uniprot
+  N: 8045
+  width: 3.91
+  color: "#79A63A"
+  FROM: http://rdf.ebi.ac.uk/dataset/chembl
+doid -> mesh
+  N: 3614
+  width: 3.56
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/doid
+doid -> omim_phenotype
+  N: 5512
+  width: 3.74
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/doid
+ensembl_gene -> hgnc
+  N: 44278
+  width: 4.65
+  color: "#3AA64C"
+  FROM: http://rdf.integbio.jp/dataset/ensembl
+ensembl_gene -> ncbigene
+  N: 5767391
+  width: 6.76
+  color: "#3AA64C"
+  FROM: http://rdf.ebi.ac.uk/dataset/ensembl/102/homo_sapiens
+ensembl_gene -> uniprot
+  N: 4373344
+  width: 6.64
+  color: "#3AA64C"
+  FROM: http://rdf.ebi.ac.uk/dataset/ensembl/102/homo_sapiens
+glytoucan -> doid
+  N: 248
+  width: 2.39
+  color: "#673AA6"
+  FROM: "http://purl.obolibrary.org/obo/doid http://rdf.glycoinfo.org/ggdb http://rdf.glycoinfo.org/ggdonto http://rdf.glycosmos.org/disgenet http://rdf.glycosmos.org/genomealliance http://rdf.glytoucan.org/partner/jcggdb_aist"
+glytoucan -> uniprot
+  N: 28038
+  width: 4.45
+  color: "#673AA6"
+  FROM: http://rdf.glycosmos.org/glycan_glycoprotein
+hgnc -> ensembl_gene
+  N: 39997
+  width: 4.60
+  color: "#3AA64C"
+  FROM: http://med2rdf.org/graph/hgnc
+hgnc -> ncbigene
+  N: 42861
+  width: 4.63
+  color: "#3AA64C"
+  FROM: http://med2rdf.org/graph/hgnc
+hgnc -> uniprot
+  N: 20309
+  width: 4.31
+  color: "#3AA64C"
+  FROM: http://med2rdf.org/graph/hgnc
+medgen -> hp
+  N: 16049
+  width: 4.21
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
+medgen -> mesh
+  N: 16458
+  width: 4.22
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
+medgen -> mondo
+  N: 20165
+  width: 4.30
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
+medgen -> ncbigene
+  N: 6856
+  width: 3.84
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
+medgen -> omim_phenotype
+  N: 10676
+  width: 4.03
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
+medgen -> orphanet
+  N: 8658
+  width: 3.94
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/medgen
+mondo -> doid
+  N: 9886
+  width: 4.00
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
+mondo -> hp
+  N: 567
+  width: 2.75
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
+mondo -> mesh
+  N: 7895
+  width: 3.90
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
+mondo -> omim_phenotype
+  N: 9015
+  width: 3.95
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
+mondo -> orphanet
+  N: 9436
+  width: 3.97
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/mondo
+nando -> mondo
+  N: 2389
+  width: 3.38
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/togosite/nando
+ncbigene -> ensembl_gene
+  N: 4241243
+  width: 6.63
+  color: "#3AA64C"
+  FROM: input/ncbigene/gene2ensembl
+ncbigene -> hgnc
+  N: 43038
+  width: 4.63
+  color: "#3AA64C"
+  FROM: input/ncbigene/Homo_sapiens.gene_info
+orphanet -> mesh
+  N: 1760
+  width: 3.25
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/ordo
+orphanet -> omim_phenotype
+  N: 7574
+  width: 3.88
+  color: "#3A5EA6"
+  FROM: http://rdf.integbio.jp/dataset/bioportal/ordo
+pdb -> uniprot
+  N: 291165
+  width: 5.46
+  color: "#A6823A"
+  FROM: http://rdf.integbio.jp/dataset/pdbj
+pubchem_compound -> chebi
+  N: 130141
+  width: 5.11
+  color: "#A63A94"
+  FROM: http://rdf.ncbi.nlm.nih.gov/pubchem/substance
+pubchem_compound -> chembl_compound
+  N: 2084624
+  width: 6.32
+  color: "#A63A94"
+pubchem_compound -> glytoucan
+  N: 31767
+  width: 4.50
+  color: "#A63A94"
+reactome_reaction -> chebi
+  N: 182548
+  width: 5.26
+  color: "#A63A43"
+  FROM: http://rdf.ncbi.nlm.nih.gov/pubchem/substance
+reactome_reaction -> uniprot
+  N: 625777
+  width: 5.80
+  color: "#A63A43"
+  FROM: http://rdf.ebi.ac.uk/dataset/reactome
+togovar -> ensembl_gene
+  :tsv
+  N: 72473309
+  width: 7.86
+  color: "#3AA69D"
+  FROM: https://togovar.biosciencedbc.jp/public/togoid/tgvid2ensembl.tsv
+togovar -> hgnc
+  :tsv
+  N: 60732887
+  width: 7.78
+  color: "#3AA69D"
+  FROM: https://togovar.biosciencedbc.jp/public/togoid/tgvid2hgnc.tsv
+togovar -> medgen
+  N: 933266
+  width: 5.97
+  color: "#3AA69D"
+  FROM: "http://rdf.integbio.jp/dataset/togosite/clinvar http://rdf.integbio.jp/dataset/togosite/variation http://rdf.integbio.jp/dataset/togosite/variation/annotation/clinvar"
+togovar -> ncbigene
+  :tsv
+  N: 60001809
+  width: 7.78
+  color: "#3AA69D"
+  FROM: https://togovar.biosciencedbc.jp/public/togoid/tgvid2ncbigene.tsv
+uniprot -> chembl_target
+  :tsv
+  N: 9579
+  width: 3.98
+  color: "#79A63A"
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+uniprot -> ensembl_gene
+  :tsv
+  N: 5225194
+  width: 6.72
+  color: "#79A63A"
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+uniprot -> hgnc
+  :tsv
+  N: 78237
+  width: 4.89
+  color: "#79A63A"
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+uniprot -> ncbigene
+  :tsv
+  N: 13701476
+  width: 7.14
+  color: "#79A63A"
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+uniprot -> omim_phenotype
+  N: 6378
+  width: 3.80
+  color: "#79A63A"
+uniprot -> orphanet
+  :tsv
+  N: 7737
+  width: 3.89
+  color: "#79A63A"
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
+uniprot -> pdb
+  :tsv
+  N: 281044
+  width: 5.45
+  color: "#79A63A"
+  FROM: ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz
