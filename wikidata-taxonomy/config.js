@@ -2,7 +2,25 @@
   node: {
     caption: ['name'],
     defaultIcon: true,
-    title: (n) => blitzboard.createTitle(n) + (n.thumbnail ? `<img width=200 src='${n.thumbnail}'>` : ''),
+    title: (n) => {
+      let titleText = `<tr><td><a target"_blank" href="${n.url}">${n.id}</a></td><td><b>${n.name}</b></td></tr>`;
+      Object.entries(n.properties).forEach(([key, value]) => {
+        if (key === 'thumbnail' || key === 'url' || key === 'name') {
+          // skip
+        } else if (key === 'taxon rank') {
+          titleText += `<tr valign="top"><td>rank</td><td>${value}</td></tr>`;
+        } else if (key === 'taxon name') {
+          titleText += `<tr valign="top"><td>name</td><td>${value}</td></tr>`;
+        } else {
+          titleText += `<tr valign="top"><td>${key}</td><td>${value}</td></tr>`;
+        }
+      });
+      let image = '';
+      if (n.thumbnail) {
+        image = `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
+      }
+      return `<table style='fixed'>${titleText}</table>${image}`;
+    },
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
