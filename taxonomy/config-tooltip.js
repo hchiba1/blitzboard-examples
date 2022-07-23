@@ -6,46 +6,31 @@
     title: (n) => {
       return createTitle(n);
       function createTitle(elem) {
-        let idText = `<tr><td><b><a target"_blank" href="http://identifiers.org/taxonomy/${elem.id}">${elem.id}</a></b></td><td> <b>${wrapText(elem.labels.map((l) => ':' + l).join(' '), true)}</b></td></tr>`;
-        let props = [];
-        let img = '';
+        let idText = `<tr><td><b><a target"_blank" href="http://identifiers.org/taxonomy/${elem.id}">${elem.id}</a></b></td><td><b>${elem.name}</b></td></tr>`;
         Object.entries(elem.properties).forEach(([key, value]) => {
-          if (key === 'thumbnail') {
-            img = `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
-          } else if (key === 'tax ID') {
+          if (key === 'thumbnail' || key === 'tax ID' || key === 'name' || key === 'Wikidata') {
+            // skip
+          } else if (key === 'taxon rank') {
+            idText += `<tr valign="top"><td>rank</td><td>${value}</td></tr>`;
+          } else if (key === 'taxon name') {
+            idText += `<tr valign="top"><td>name</td><td>${value}</td></tr>`;
           } else {
-            props.push(`<tr valign="top"><td>${key}</td><td> ${convertToHyperLinkIfURL(value)}</td></tr>`);
+            idText += `<tr valign="top"><td>${key}</td><td>${value}</td></tr>`;
           }
         });
-        return `<table style='fixed'>${idText}${props.join('')}</table>${img}`;
-      }
-      function convertToHyperLinkIfURL(text) {
-        if(!text)
-          return text;
-        if(Array.isArray(text))
-          text = text[0];
-        if(text.startsWith('http://') || text.startsWith('https://') ) {
-          const url = text;
-          const m = text.match(/.*wikidata.org\/entity\/(\S+)$/);
+        if (n.Wikidata) {
+          let wikidata = n.Wikidata;
+          const m = wikidata.match(/.*wikidata.org\/entity\/(\S+)$/);
           if (m) {
-            text = m[1];
+            wikidata = m[1];
           }
-          return `<a target="_blank" href="${url}">${wrapText(text)}</a>`;
+          idText += `<tr><td>Wikidata</td><td><a target"_blank" href="${n.Wikidata}">${wikidata}</a></td></tr>`;
         }
-        return wrapText(text);
-      }
-      function wrapText(str, asHtml) {
-        if(!str)
-          return str;
-        if(Array.isArray(str))
-          str = str[0];
-        const maxWidth = 40;
-        let newLineStr = asHtml ? "<br>" : "\n", res = '';
-        while (str.length > maxWidth) {
-          res += str.slice(0, maxWidth) + newLineStr;
-          str = str.slice(maxWidth);
+        let img = '';
+        if (n.thumbnail) {
+          img = `<a target="_blank" href="${n.thumbnail}"><img src="${n.thumbnail}" height="200"></a>`;
         }
-        return res + str;
+        return `<table style='fixed'>${idText}</table>${img}`;
       }
     },
     onDoubleClick: (n) => window.open(n.url, '_blank'),
@@ -195,6 +180,7 @@
   },
   edge: {
     caption: [],
+    title: '',
     width: 3,
     selectionWidth: 0,
     opacity: 0.6
