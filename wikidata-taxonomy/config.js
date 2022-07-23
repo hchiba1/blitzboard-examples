@@ -2,6 +2,7 @@
   node: {
     caption: ['name'],
     defaultIcon: true,
+    title: (n) => blitzboard.createTitle(n) + (n.thumbnail ? `<img width=200 src='${n.thumbnail}'>` : ''),
     onDoubleClick: (n) => window.open(n.url, '_blank'),
     onClick: (n) => {
       blitzboard.showLoader();
