@@ -36,7 +36,7 @@ $(function () {
         const name = ui.item.label;
         sparqlTaxonomy(name, (json) => {
           blitzboard.setGraph('', true);
-          addNode(name, json.results.bindings[0]);
+          addNode(json.results.bindings[0]);
         });
       }
     }
@@ -47,9 +47,10 @@ function sparqlTaxonomy(name, callback) {
   const sparql = `
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-    SELECT ?url ?rank
+    SELECT ?url ?name ?rank
     WHERE {
       ?url rdfs:label "${name}" .
+      ?url rdfs:label ?name .
       ?url taxon:rank/rdfs:label ?rank .
     }`;
   fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
@@ -84,7 +85,7 @@ function getThumb(name, callback) {
   });
 }
 
-function addNode (name, elem) {
+function addNode (elem) {
   let id = elem.url.value.replace(/.*\//g, '');
   if (blitzboard.hasNode(id)) {
     return;
@@ -93,12 +94,12 @@ function addNode (name, elem) {
     id: id,
     labels: ['Taxon'],
     properties: {
-      'taxon name': [name],
+      'taxon name': [elem.name.value],
       'taxon rank': [elem.rank.value],
       'tax ID': [elem.url.value],
     }
   };
-  getThumb(name, (result) => {
+  getThumb(elem.name.value, (result) => {
     for (let elem of result.results.bindings) {
       if (elem.thumb?.value) {
         node.properties.thumbnail = [elem.thumb.value];
