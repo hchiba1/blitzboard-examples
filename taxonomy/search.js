@@ -36,10 +36,7 @@ $(function () {
         const name = ui.item.label;
         sparqlTaxonomy(name, (json) => {
           blitzboard.setGraph('', true);
-          addNode(name, json.results.bindings[0], (id) => {
-            blitzboard.update();
-            blitzboard.network.fit();
-          });
+          addNode(name, json.results.bindings[0]);
         });
       }
     }
@@ -87,7 +84,7 @@ function getThumb(name, callback) {
   });
 }
 
-function addNode (name, elem, callback) {
+function addNode (name, elem) {
   let id = elem.url.value.replace(/.*\//g, '');
   if (blitzboard.hasNode(id)) {
     return;
@@ -123,6 +120,6 @@ function addNode (name, elem, callback) {
       node.properties.name = [elem.name.value];
     }
     blitzboard.addNode(node, true);
-    callback(id);
+    blitzboard.network.fit();
   });
 }
