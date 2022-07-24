@@ -1,5 +1,7 @@
 function init() {
-  candidates = ['sapiens'];
+  $.get('./taxonomy/candidate_genus', (res) => {
+    candidates = res.trim().split('\n')
+  });
 
   $('#tags').focus();
 }
@@ -28,9 +30,16 @@ $(function () {
   //   }
   // });
   
-  const list = ['Homo', 'human', 'mouse'];
+
   $('#tags').autocomplete({
-    source: list,
+    source: (request, response) => {
+      response(
+        $.grep(candidates, (value) => {
+          let regexp = new RegExp('\\b' + escapeRegExp(request.term), 'i');
+          return value.match(regexp);
+        })
+      );
+    },
     select: (e, ui) => {
       if (ui.item) {
         const name = ui.item.label;
