@@ -1,5 +1,5 @@
 function init() {
-  $.get('./taxonomy/candidate_genus', (res) => {
+  $.get('./taxonomy/candidate_names', (res) => {
     candidates = res.trim().split('\n')
   });
 
@@ -42,7 +42,8 @@ $(function () {
     },
     select: (e, ui) => {
       if (ui.item) {
-        const name = ui.item.label;
+        let name = ui.item.label;
+        name = name.replace(/ \(.+\)$/, '');
         sparqlTaxonomy(name, (json) => {
           blitzboard.setGraph('', true);
           addNode(json.results.bindings[0]);
