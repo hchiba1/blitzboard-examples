@@ -11,26 +11,6 @@ function escapeRegExp(string) {
 }
 
 $(function () {
-  // $('#tags').autocomplete({
-  //   source: (request, response) => {
-  //     response(
-  //       $.grep(candidates, (value) => {
-  //         let regexp = new RegExp('\\b' + escapeRegExp(request.term), 'i');
-  //         return value.match(regexp);
-  //       })
-  //     );
-  //   },
-  //   autoFocus: true,
-  //   delay: 100,
-  //   minLength: 1,
-  //   select: (e, ui) => {
-  //     if (ui.item) {
-  //       show_contents(ui.item['label']);
-  //     }
-  //   }
-  // });
-  
-
   $('#tags').autocomplete({
     source: (request, response) => {
       response(
@@ -40,6 +20,9 @@ $(function () {
         })
       );
     },
+    autoFocus: true,
+    delay: 100,
+    minLength: 2,
     select: (e, ui) => {
       if (ui.item) {
         let name = ui.item.label;
