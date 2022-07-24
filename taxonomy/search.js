@@ -28,17 +28,39 @@ $(function () {
   //   }
   // });
   
-  const list = ['human', 'mouse'];
+  const list = ['Homo', 'human', 'mouse'];
   $('#tags').autocomplete({
     source: list,
     select: (e, ui) => {
       if (ui.item) {
-        // show_contents(ui.item['label']);
-        console.log(ui.item.label, e);
-        blitzboard.setGraph('hoge', false);
-        blitzboard.setConfig(Function('blitzboard', `"use strict";return (${config})`)(blitzboard), true);
-        blitzboard.network.stabilize();
+        const name = ui.item.label;
+        sparqlTaxonomy(name, (json) => {
+          const url = json.results.bindings[0].url.value;
+          const rank = json.results.bindings[0].rank.value;
+          const m = url.match(/.*\/(\d+)/);
+          if (m) {
+            const taxid = m[1];
+            let pg = `${taxid} :Taxon "taxon name": "${name}" "name": "${name}"`;
+            blitzboard.setGraph(pg, true);
+          }
+        });
       }
     }
   });
 });
+
+function sparqlTaxonomy(name, callback) {
+  const sparql = `
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
+    SELECT ?url ?rank
+    WHERE {
+      ?url rdfs:label "${name}" .
+      ?url taxon:rank/rdfs:label ?rank .
+    }`;
+  fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
+    return res.json();
+  }).then(json => {
+    callback(json);
+  });
+}
