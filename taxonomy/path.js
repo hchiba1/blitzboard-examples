@@ -93,7 +93,7 @@ function sparqlToRoot(name, callback) {
       ?tax rdfs:label ?name .
       ?tax taxon:rank/rdfs:label ?rank .
     }
-    ORDER BY ?level
+    ORDER BY DESC(?level)
     `;
   fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
     return res.json();
@@ -169,8 +169,8 @@ function addPath(nodes) {
     if (!blitzboard.hasNode(nodes[i+1].id)) {
       addNode(nodes[i+1]);
     }
-    if (!blitzboard.hasEdge(nodes[i+1].id, nodes[i].id)) {
-      blitzboard.addEdge({ from: nodes[i+1].id, to: nodes[i].id, labels: ['child taxon'] });
+    if (!blitzboard.hasEdge(nodes[i].id, nodes[i+1].id)) {
+      blitzboard.addEdge({ from: nodes[i].id, to: nodes[i+1].id, labels: ['child taxon'] });
     }
   }
   blitzboard.network.fit();
