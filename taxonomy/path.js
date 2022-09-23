@@ -40,13 +40,16 @@ function sparqlToRoot(name, callback) {
   const sparql = `
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-    SELECT ?tax ?name ?rank
+    SELECT ?tax ?name ?rank ?common_name
     WHERE {
       ?s a taxon:Taxon ;
          rdfs:label "${name}" ;
          rdfs:subClassOf ?tax option(transitive, t_direction 1, t_min 0, t_step("step_no") as ?level) .
       ?tax rdfs:label ?name .
       ?tax taxon:rank/rdfs:label ?rank .
+      OPTIONAL {
+        ?tax taxon:genbankCommonName ?common_name .
+      }
     }
     ORDER BY DESC(?level)
     `;
@@ -58,7 +61,7 @@ function sparqlToRoot(name, callback) {
     results.forEach((elem) => {
       const taxid = elem.tax.value.replace(/.*\//g, '');
       if (taxid != "1") {
-        nodes.push({
+        let node = {
           id: taxid,
           labels: ['Taxon'],
           properties: {
@@ -66,7 +69,11 @@ function sparqlToRoot(name, callback) {
             'taxon name': [elem.name.value],
             'taxon rank': [elem.rank.value],
           }
-        });
+        };
+        if (elem.common_name) {
+          node.properties['taxon name'][0] += ` (${elem.common_name.value})`;
+        }
+        nodes.push(node);
       }
     });
     callback(nodes);
@@ -118,7 +125,7 @@ function addNode (node) {
   if (blitzboard.hasNode(node.id)) {
     return;
   }
-  getThumb(node.properties['taxon name'], (result) => {
+  getThumb(node.properties['name'], (result) => {
     for (let elem of result.results.bindings) {
       if (elem.thumb?.value) {
         node.properties.thumbnail = [elem.thumb.value];
