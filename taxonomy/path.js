@@ -27,9 +27,9 @@ $(function () {
       if (ui.item) {
         let name = ui.item.label;
         name = name.replace(/ \(.+\)$/, '');
-        sparqlToRoot(name, (nodes) => {
+        sparqlToRoot(name, (path) => {
           // blitzboard.setGraph('', true);
-          addPath(nodes);
+          addPath(path);
         });
       }
     }
@@ -57,7 +57,7 @@ function sparqlToRoot(name, callback) {
     return res.json();
   }).then(json => {
     const results = json.results.bindings;
-    let nodes = [];
+    let path = [];
     results.forEach((elem) => {
       const taxid = elem.tax.value.replace(/.*\//g, '');
       if (taxid != "1") {
@@ -73,10 +73,10 @@ function sparqlToRoot(name, callback) {
         if (elem.common_name) {
           node.properties['taxon name'][0] += ` (${elem.common_name.value})`;
         }
-        nodes.push(node);
+        path.push(node);
       }
     });
-    callback(nodes);
+    callback(path);
   });
 }
 
@@ -105,14 +105,14 @@ function getThumb(name, callback) {
   });
 }
 
-function addPath(nodes) {
-  if (!blitzboard.hasNode(nodes[0].id)) {
-    blitzboard.addNode(nodes[0], true);
+function addPath(path) {
+  if (!blitzboard.hasNode(path[0].id)) {
+    blitzboard.addNode(path[0], true);
   }
-  for (let i=0; i<nodes.length-1; i++) {
+  for (let i=0; i<path.length-1; i++) {
     console.log(i);
-    if (!blitzboard.hasNode(nodes[i+1].id)) {
-      const node = nodes[i+1];
+    if (!blitzboard.hasNode(path[i+1].id)) {
+      const node = path[i+1];
       getThumb(node.properties['name'], (results) => {
         for (let elem of results) {
           if (elem.thumb?.value) {
@@ -135,8 +135,8 @@ function addPath(nodes) {
         blitzboard.network.fit();
       });
     }
-    if (!blitzboard.hasEdge(nodes[i].id, nodes[i+1].id)) {
-      blitzboard.addEdge({ from: nodes[i].id, to: nodes[i+1].id, labels: ['child taxon'] });
+    if (!blitzboard.hasEdge(path[i].id, path[i+1].id)) {
+      blitzboard.addEdge({ from: path[i].id, to: path[i+1].id, labels: ['child taxon'] });
     }
   }
 }
