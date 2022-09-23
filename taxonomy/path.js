@@ -85,11 +85,13 @@ function sparqlToRoot(name, callback) {
   const sparql = `
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-    SELECT ?tax
+    SELECT ?tax ?name ?rank
     WHERE {
       ?s a taxon:Taxon ;
          rdfs:label "${name}" ;
          rdfs:subClassOf ?tax option(transitive, t_direction 1, t_min 0, t_step("step_no") as ?level) .
+      ?tax rdfs:label ?name .
+      ?tax taxon:rank/rdfs:label ?rank .
     }
     ORDER BY ?level
     `;
@@ -101,7 +103,15 @@ function sparqlToRoot(name, callback) {
     results.forEach((elem) => {
       const taxid = elem.tax.value.replace(/.*\//g, '');
       if (taxid != "1") {
-        nodes.push({ id: taxid, labels: ['Taxon'] });
+        nodes.push({
+          id: taxid,
+          labels: ['Taxon'],
+          properties: {
+            'name': [elem.name.value],
+            'taxon name': [elem.name.value],
+            'taxon rank': [elem.rank.value],
+          }
+        });
       }
     });
     callback(nodes);
@@ -151,13 +161,13 @@ function getThumb(name, callback) {
 }
 
 function addPath(nodes) {
-  if (!blitzboard.hasNode(nodes[0])) {
+  if (!blitzboard.hasNode(nodes[0].id)) {
     blitzboard.addNode(nodes[0], true);
   }
   for (let i=0; i<nodes.length-1; i++) {
     console.log(i);
-    if (!blitzboard.hasNode(nodes[i+1])) {
-      blitzboard.addNode(nodes[i+1], true);
+    if (!blitzboard.hasNode(nodes[i+1].id)) {
+      addNode(nodes[i+1]);
     }
     if (!blitzboard.hasEdge(nodes[i+1].id, nodes[i].id)) {
       blitzboard.addEdge({ from: nodes[i+1].id, to: nodes[i].id, labels: ['child taxon'] });
@@ -166,21 +176,11 @@ function addPath(nodes) {
   blitzboard.network.fit();
 }
 
-function addNode (elem) {
-  let id = elem.url.value.replace(/.*\//g, '');
-  if (blitzboard.hasNode(id)) {
+function addNode (node) {
+  if (blitzboard.hasNode(node.id)) {
     return;
   }
-  let node = {
-    id: id,
-    labels: ['Taxon'],
-    properties: {
-      'taxon name': [elem.name.value],
-      'taxon rank': [elem.rank.value],
-      'tax ID': [elem.url.value],
-    }
-  };
-  getThumb(elem.name.value, (result) => {
+  getThumb(node.properties['taxon name'], (result) => {
     for (let elem of result.results.bindings) {
       if (elem.thumb?.value) {
         node.properties.thumbnail = [elem.thumb.value];
