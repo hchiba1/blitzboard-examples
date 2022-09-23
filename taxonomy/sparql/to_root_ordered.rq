@@ -4,10 +4,12 @@
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-SELECT ?tax
+SELECT ?tax ?name ?rank
 WHERE {
   ?s a taxon:Taxon ;
      rdfs:label "Homo sapiens" ;
      rdfs:subClassOf ?tax option(transitive, t_direction 1, t_min 0, t_step("step_no") as ?level) .
+  ?tax rdfs:label ?name .
+  ?tax taxon:rank/rdfs:label ?rank .
 }
-ORDER BY ?level
+ORDER BY DESC(?level)
