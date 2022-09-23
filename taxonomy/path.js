@@ -105,23 +105,7 @@ function getThumb(name, callback) {
   });
 }
 
-function addPath(nodes) {
-  if (!blitzboard.hasNode(nodes[0].id)) {
-    blitzboard.addNode(nodes[0], true);
-  }
-  for (let i=0; i<nodes.length-1; i++) {
-    console.log(i);
-    if (!blitzboard.hasNode(nodes[i+1].id)) {
-      addNode(nodes[i+1]);
-    }
-    if (!blitzboard.hasEdge(nodes[i].id, nodes[i+1].id)) {
-      blitzboard.addEdge({ from: nodes[i].id, to: nodes[i+1].id, labels: ['child taxon'] });
-    }
-  }
-  blitzboard.network.fit();
-}
-
-function addNode (node) {
+function addNode(node) {
   if (blitzboard.hasNode(node.id)) {
     return;
   }
@@ -146,4 +130,20 @@ function addNode (node) {
     blitzboard.addNode(node, true);
     blitzboard.network.fit();
   });
+}
+
+function addPath(nodes) {
+  if (!blitzboard.hasNode(nodes[0].id)) {
+    blitzboard.addNode(nodes[0], true);
+  }
+  for (let i=0; i<nodes.length-1; i++) {
+    console.log(i);
+    if (!blitzboard.hasNode(nodes[i+1].id)) {
+      addNode(nodes[i+1]);
+    }
+    if (!blitzboard.hasEdge(nodes[i].id, nodes[i+1].id)) {
+      blitzboard.addEdge({ from: nodes[i].id, to: nodes[i+1].id, labels: ['child taxon'] });
+    }
+  }
+  blitzboard.network.fit();
 }
