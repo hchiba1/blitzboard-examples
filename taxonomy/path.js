@@ -106,9 +106,6 @@ function getThumb(name, callback) {
 }
 
 function addNode(node) {
-  if (blitzboard.hasNode(node.id)) {
-    return;
-  }
   getThumb(node.properties['name'], (results) => {
     for (let elem of results) {
       if (elem.thumb?.value) {
@@ -145,5 +142,4 @@ function addPath(nodes) {
       blitzboard.addEdge({ from: nodes[i].id, to: nodes[i+1].id, labels: ['child taxon'] });
     }
   }
-  blitzboard.network.fit();
 }
