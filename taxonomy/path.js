@@ -27,9 +27,9 @@ $(function () {
       if (ui.item) {
         let name = ui.item.label;
         name = name.replace(/ \(.+\)$/, '');
-        sparqlToRoot(name, (taxids) => {
+        sparqlToRoot(name, (nodes) => {
           // blitzboard.setGraph('', true);
-          addPath(taxids);
+          addPath(nodes);
         });
       }
     }
