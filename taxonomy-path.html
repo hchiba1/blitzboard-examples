@@ -11,14 +11,12 @@
         <script src="taxonomy/path.js"></script>
     </head>
     <body onload=init()>
-        <label id="input_label" for="tags">Browse from: </label><input id="tags" size="40">
-        <label id="input_label2" for="tags2">to: </label><input id="tags2" size="40">
+        <label id="input_label" for="tags">Search: </label><input id="tags" size="40">
         <br><br>
         <div id='graph-area' style="width: 98%; height: 90%; border: solid 1px silver; background: radial-gradient(white, silver);"></div>
         <script>
          let blitzboard = new Blitzboard(document.getElementById('graph-area'));
          let graph, config;
-         let pathStart;
          let graphPromise = fetch('taxonomy/graph.pg').then(res => {
              return res.text();
          }).then(text => {

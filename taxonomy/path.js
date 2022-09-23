@@ -27,11 +27,6 @@ $(function () {
       if (ui.item) {
         let name = ui.item.label;
         name = name.replace(/ \(.+\)$/, '');
-        // sparqlTaxonomy(name, (json) => {
-        //   pathStart = json.results.bindings[0].url.value;
-        //   blitzboard.setGraph('', true);
-        //   addNode(json.results.bindings[0]);
-        // });
         sparqlToRoot(name, (taxids) => {
           // blitzboard.setGraph('', true);
           addPath(taxids);
@@ -39,47 +34,7 @@ $(function () {
       }
     }
   });
-  $('#tags2').autocomplete({
-    source: (request, response) => {
-      response(
-        $.grep(candidates, (value) => {
-          let regexp = new RegExp('\\b' + escapeRegExp(request.term), 'i');
-          return value.match(regexp);
-        })
-      );
-    },
-    autoFocus: true,
-    delay: 100,
-    minLength: 2,
-    select: (e, ui) => {
-      if (ui.item) {
-        let name = ui.item.label;
-        name = name.replace(/ \(.+\)$/, '');
-        sparqlTaxonomy(name, (json) => {
-          const pathEnd = json.results.bindings[0].url.value
-          // addNode(json.results.bindings[0]);
-        });
-      }
-    }
-  });
 });
-
-function sparqlTaxonomy(name, callback) {
-  const sparql = `
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-    SELECT ?url ?name ?rank
-    WHERE {
-      ?url rdfs:label "${name}" .
-      ?url rdfs:label ?name .
-      ?url taxon:rank/rdfs:label ?rank .
-    }`;
-  fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
-    return res.json();
-  }).then(json => {
-    callback(json);
-  });
-}
 
 function sparqlToRoot(name, callback) {
   const sparql = `
@@ -115,23 +70,6 @@ function sparqlToRoot(name, callback) {
       }
     });
     callback(nodes);
-  });
-}
-
-function sparqlTaxonomy(name, callback) {
-  const sparql = `
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX taxon: <http://ddbj.nig.ac.jp/ontologies/taxonomy/>
-    SELECT ?url ?name ?rank
-    WHERE {
-      ?url rdfs:label "${name}" .
-      ?url rdfs:label ?name .
-      ?url taxon:rank/rdfs:label ?rank .
-    }`;
-  fetch(`https://spang.dbcls.jp/sparql?query=${encodeURIComponent(sparql)}&format=json`).then(res => {
-    return res.json();
-  }).then(json => {
-    callback(json);
   });
 }
 
