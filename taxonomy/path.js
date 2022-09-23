@@ -100,8 +100,8 @@ function getThumb(name, callback) {
         }`;
   fetch(`https://query.wikidata.org/sparql?query=${encodeURIComponent(sparqlGetThum)}&format=json`).then(res => {
     return res.json();
-  }).then(result => {
-    callback(result);
+  }).then(json => {
+    callback(json.results.bindings);
   });
 }
 
@@ -125,8 +125,8 @@ function addNode (node) {
   if (blitzboard.hasNode(node.id)) {
     return;
   }
-  getThumb(node.properties['name'], (result) => {
-    for (let elem of result.results.bindings) {
+  getThumb(node.properties['name'], (results) => {
+    for (let elem of results) {
       if (elem.thumb?.value) {
         node.properties.thumbnail = [elem.thumb.value];
       }
@@ -142,9 +142,6 @@ function addNode (node) {
       if (elem.name_ja?.value) {
         node.properties.name = [elem.name_ja.value];
       }
-    }
-    if (!node.properties.name) {
-      node.properties.name = [elem.name.value];
     }
     blitzboard.addNode(node, true);
     blitzboard.network.fit();
