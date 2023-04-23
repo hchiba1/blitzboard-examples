@@ -1,4 +1,4 @@
-# blitzboard-samples
+# blitzboard-examples
 
 https://hchiba1.github.io/blitzboard-samples/
 
