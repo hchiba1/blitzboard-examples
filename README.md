@@ -2,6 +2,14 @@
 
 https://hchiba1.github.io/blitzboard-samples/
 
+### Load blitzboard
+```
+<script src='https://cdn.jsdelivr.net/gh/blitzboard/blitzboard@v1.2.0/dist/blitzboard.bundle.min.js'></script>
+```
+or
+```
+<script src='https://cdn.jsdelivr.net/gh/blitzboard/blitzboard@v1.1.0/dist/blitzboard.bundle.min.js'></script>
+```
 
 ### Load vis-network
 ```
